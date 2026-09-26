@@ -1,13 +1,17 @@
-# Ficha Agrícola de Valoración — versión catálogo dinámico
+# Ficha Agrícola de Valoración — versión 5
 
-Esta versión integra 26 cultivos del catálogo técnico de trabajo y carga variables especiales automáticamente al seleccionar el cultivo.
+Esta versión convierte la sección de cultivo en una ficha agrícola maestra de captura, manteniendo separados los datos de referencia del catálogo y los datos observados en campo.
 
-## Uso
-1. Abrir `index.html` mediante un servidor local/HTTPS para habilitar completamente GPS y PWA.
-2. Seleccionar el cultivo en la sección 3.
-3. Revisar la tarjeta de referencia técnica.
-4. Capturar las variables especiales que aparecen automáticamente.
-5. Guardar el expediente; también se puede exportar JSON/CSV.
+## Cambios principales
+- Identificación botánica y del sistema productivo.
+- Arquitectura y estructura observada.
+- Desarrollo, edad, fenología, vigor, uniformidad y condición productiva.
+- Manejo del cultivo: riego, fertirriego, sombra, nutrición, poda, malezas y drenaje.
+- Sanidad y afectaciones observables, diferenciando observación de diagnóstico.
+- Comparación descriptiva de altura, densidad y marco contra el catálogo.
+- Muestreo con método, número de puntos, unidad y criterio de selección.
+- Persistencia mejorada: se recuperan los valores de variables dinámicas y las tablas de muestreo, costos e infraestructura.
+- Compatibilidad de lectura con expedientes guardados en la versión anterior.
 
-## Nota técnica
-Los rangos mostrados son referencias de trabajo y no deben tratarse como valores universales ni como sustituto de la medición de campo. La ficha maestra en Excel mantiene la trazabilidad y el estado de verificación.
+## Nota
+La comparación técnica no constituye por sí sola una conclusión agronómica ni económica. Los rangos del catálogo siguen marcados como referencias pendientes de verificación individual.
