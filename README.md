@@ -1,14 +1,15 @@
-# PWA Valoración de Cultivos — v6
+# Valoración de Cultivos — PWA v9
 
-## Cambios de esta versión
-- El expediente comienza por la selección del cultivo.
-- La primera pantalla muestra ficha técnica de referencia, patrón sano y diagrama esquemático del cultivo seleccionado.
-- El módulo de muestreo cambia sus columnas según el cultivo.
-- Cada punto permite zona/estrato, unidades, productivas, variables específicas, estado, observación y GPS.
-- Se conserva compatibilidad básica con muestras guardadas en v5.
-- Se incorporan etapas fenológicas/estados dinámicos para el muestreo.
-- La información de referencia permanece separada de la observación de campo.
-- No se modifica todavía la capa económica del avalúo.
+Conecta el muestreo de campo con el cálculo físico.
 
-## Uso
-Abrir mediante un servidor local/hosting para tener pleno funcionamiento de PWA y service worker. También puede abrirse el index.html para pruebas locales, aunque algunas funciones del navegador pueden requerir HTTPS/localhost.
+## Novedades
+- Deriva automáticamente producción media a partir de variables del muestreo cuando existe una fórmula técnicamente compatible.
+- Calcula el coeficiente de variación de la producción derivada entre puntos válidos.
+- Informa la completitud de la muestra.
+- Extrapola a unidades productivas o área efectiva cuando las unidades son compatibles.
+- Para cebada y trigo, deriva kg/ha usando espigas/m², granos/espiga y peso de mil granos.
+- Conserva método manual/registro como alternativa.
+- Puede recuperar expedientes V8 desde el almacenamiento local.
+
+## Precaución
+La estimación automática no reemplaza la revisión del avaluador. Antes de adoptar el resultado debe verificarse la compatibilidad entre unidad de muestreo, unidad productiva, área efectiva, etapa fenológica, producción pendiente y calidad comercial.

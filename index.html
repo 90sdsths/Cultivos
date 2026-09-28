@@ -8,7 +8,7 @@
 :root{--vino:#6b2130;--vino2:#842d3d;--oro:#b28a3a;--fondo:#f4f1eb;--card:#fff;--line:#ddd5ca;--txt:#292725;--muted:#706b65;--ok:#2c684d;--warn:#8a5b19}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--fondo);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:16px}
 header{background:var(--vino);color:#fff;padding:16px 15px 13px;position:sticky;top:0;z-index:30;box-shadow:0 2px 9px #0003}header h1{margin:0;font-size:21px}header p{margin:3px 0 0;font-size:12px;opacity:.9}
-main{max-width:820px;margin:auto;padding:10px 12px 105px}.topbar{display:grid;grid-template-columns:1fr auto;gap:8px;margin:7px 0}.status{font-size:12px;color:var(--muted);padding:9px 2px}.tabs{display:flex;gap:6px;overflow:auto;padding:4px 0 9px;position:sticky;top:69px;background:var(--fondo);z-index:20}.tabs button{white-space:nowrap;background:#fff;color:#4b4540;border:1px solid var(--line);padding:9px 11px;border-radius:999px}.tabs button.active{background:var(--vino);color:#fff;border-color:var(--vino)}
+main{max-width:1180px;margin:auto;padding:10px 12px 105px}.topbar{display:grid;grid-template-columns:1fr auto;gap:8px;margin:7px 0}.status{font-size:12px;color:var(--muted);padding:9px 2px}.tabs{display:flex;gap:6px;overflow:auto;padding:4px 0 9px;position:sticky;top:69px;background:var(--fondo);z-index:20}.tabs button{white-space:nowrap;background:#fff;color:#4b4540;border:1px solid var(--line);padding:9px 11px;border-radius:999px}.tabs button.active{background:var(--vino);color:#fff;border-color:var(--vino)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:15px;margin:9px 0;box-shadow:0 1px 4px #0000000a}.card h2{margin:0 0 13px;color:var(--vino);font-size:18px}.card h3{font-size:15px;margin:18px 0 9px;color:#4b403d}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}label{display:block;font-size:12.5px;font-weight:700;color:#514b46;margin-bottom:5px}input,select,textarea{width:100%;min-height:44px;border:1px solid #cfc7bd;border-radius:9px;background:#fff;padding:10px;font:inherit;color:inherit}textarea{min-height:90px;resize:vertical}input:focus,select:focus,textarea:focus{outline:2px solid #b28a3a55;border-color:var(--oro)}button{border:0;border-radius:10px;background:var(--vino);color:#fff;padding:11px 13px;font:inherit;font-weight:750;cursor:pointer}.secondary{background:#ece7df;color:#3e3934}.gold{background:var(--oro)}.ok{background:var(--ok)}.danger{background:#8b3030}.small{font-size:12px;color:var(--muted)}.oktxt{color:var(--ok);font-weight:700}.warntxt{color:var(--warn);font-weight:700}.hidden{display:none!important}.check{display:flex;gap:8px;align-items:center;margin:8px 0;font-weight:500}.check input{width:20px;min-height:20px}.hint{background:#faf7f0;border-left:4px solid var(--oro);padding:10px;border-radius:7px;font-size:13px;color:#514a42;margin:10px 0}
 .toolbar{display:flex;gap:7px;flex-wrap:wrap}.toolbar button{flex:1;min-width:125px}.tablewrap{overflow:auto;margin-top:8px}table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:650px}th,td{border-bottom:1px solid var(--line);padding:6px 4px;text-align:left;vertical-align:top}td input,td select{min-height:37px;padding:7px}.remove{background:#eee3e0;color:#7a2d2d;padding:7px 9px}
 .kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}.kpi{border:1px solid var(--line);border-radius:11px;padding:11px;background:#fcfbf9}.kpi span{font-size:12px;color:var(--muted)}.kpi strong{display:block;color:var(--vino);font-size:19px;margin-top:3px}.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.photo{border:1px dashed #c8bfb5;border-radius:10px;padding:8px}.photo img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:7px;margin-top:6px}.source{font-size:11px;color:var(--muted);margin-top:4px}
@@ -25,9 +25,14 @@ footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px sol
 .sample-controls{background:#faf7f0;border:1px solid var(--line);border-radius:11px;padding:11px}.sample-config{font-size:12.5px;color:#514a42}.sample-gps{font-size:11px;color:var(--ok);margin-top:3px}.sample-gps button{padding:5px 7px;font-size:11px;margin-top:4px}
 @media(max-width:760px){.crop-hero{grid-template-columns:1fr}.sample-summary{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.sample-summary{grid-template-columns:1fr 1fr}.crop-title h3{font-size:20px}}
+
+/* v7 reference-first visual layer */
+.reference-select{background:linear-gradient(135deg,#fffdf8,#f4efe4);border:1px solid var(--line);border-radius:16px;padding:15px;margin-bottom:12px;box-shadow:0 2px 8px #0000000a}.reference-select .select-label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:900}.reference-select select{font-size:19px;font-weight:850;border:1.5px solid #b9ab98;margin-top:6px;background:#fffefa}.reference-identity{display:flex;gap:14px;align-items:center;margin-top:13px}.reference-icon{width:68px;height:68px;border-radius:18px;background:#e7eee5;border:1px solid #cfddcc;display:grid;place-items:center;font-size:38px}.reference-identity h2{margin:0;color:var(--vino);font-size:28px}.reference-identity p{margin:3px 0 0;color:var(--muted);font-style:italic}.reference-dashboard{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(390px,.92fr);gap:14px}.reference-main{display:grid;gap:11px}.reference-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.reference-fact{background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px;min-height:64px}.reference-fact span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}.reference-fact strong{display:block;margin-top:3px;color:#3f3934;font-size:13px}.reference-fact.wide{grid-column:1/-1}.reference-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}.reference-tags span{padding:5px 9px;background:#ebe6dc;border:1px solid #ded5c6;border-radius:999px;font-size:11px;font-weight:750;color:#51483f}.reference-panel{display:grid;gap:10px;grid-template-columns:1fr}.visual-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:11px;box-shadow:0 1px 4px #0000000a}.visual-card h3{margin:0;color:var(--vino);font-size:15px}.visual-sub{font-size:11px;color:var(--muted);margin:3px 0 7px}.diagram-wrap{background:#fbfaf7;border:1px solid #e9e1d7;border-radius:12px;padding:7px;display:grid;place-items:center;min-height:210px}.diagram-wrap.tall{min-height:330px}.diagram-wrap svg{width:100%;max-height:360px}.diagram-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.healthy-checks{display:grid;grid-template-columns:1fr 1fr;gap:7px}.healthy-check{background:#f5f9f3;border:1px solid #d5e3d0;border-radius:10px;padding:9px;font-size:12px;line-height:1.35}.healthy-check b{display:block;color:var(--ok);margin-bottom:2px}.healthy-check::before{content:'✓';float:right;color:var(--ok);font-weight:900}.valuation-notes{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.valuation-note{border:1px solid var(--line);border-radius:11px;padding:10px;background:#fcfbf9}.valuation-note h4{margin:0 0 4px;color:#4d4139;font-size:13px}.valuation-note p{margin:0;font-size:12px;color:#5d554d;line-height:1.4}.phenology-bar{display:flex;gap:5px;flex-wrap:wrap}.phenology-step{flex:1 1 80px;min-width:78px;background:#f6f1e8;border:1px solid #dfd2c0;border-radius:9px;padding:8px;text-align:center;font-size:10.5px}.phenology-step strong{display:block;color:var(--vino);font-size:11.5px}.geometry-note{font-size:11px;color:var(--muted);margin-top:6px}.module-label{display:inline-block;padding:4px 8px;border-radius:999px;background:#e7eee5;color:var(--ok);font-weight:900;font-size:10.5px;letter-spacing:.03em;margin-bottom:5px}.observation-intro{border-left:4px solid var(--oro);background:#fbf7ef;padding:12px;border-radius:9px;font-size:13px;margin-bottom:10px}
+@media(max-width:900px){.reference-dashboard{grid-template-columns:1fr}.reference-panel{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.reference-facts,.diagram-grid,.healthy-checks,.valuation-notes,.reference-panel{grid-template-columns:1fr}.reference-identity h2{font-size:23px}.reference-icon{width:58px;height:58px;font-size:33px}}
 </style></head>
 <body>
-<header><h1>🌱 Ficha Agrícola de Valoración</h1><p>Captura de campo · producción · costos · mercado · evidencias · cálculo preliminar</p></header>
+<header><h1>🌱 Ficha Agrícola de Valoración</h1><p>Ficha técnica · captura de campo · muestreo · producción · costos · evidencias</p></header>
 <main>
 <div class="topbar"><div class="status" id="status">Sin expediente cargado</div><button class="secondary" onclick="newCase()">＋ Nuevo expediente</button></div>
 <div class="tabs" id="tabs"></div>
@@ -48,10 +53,39 @@ footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px sol
 <h3>Mediciones geométricas</h3><div class="grid"><div><label>Distancia entre surcos / hileras (m)</label><input id="distSurcos" type="number" step="0.01"></div><div><label>Distancia entre plantas (m)</label><input id="distPlantas" type="number" step="0.01"></div><div><label>N.º de surcos / hileras</label><input id="numSurcos" type="number"></div><div><label>Longitud media del surco (m)</label><input id="longSurco" type="number" step="0.1"></div><div><label>Ancho medio de cama / módulo (m)</label><input id="anchoCama" type="number" step="0.01"></div><div><label>N.º de camas / módulos</label><input id="numCamas" type="number"></div></div>
 <div class="hint">Si el cultivo está en invernadero o casa malla, mide por separado módulos, superficies y áreas realmente ocupadas por cultivo. No confundas área construida con área productiva.</div></section>
 
-<section class="card page hidden" id="sec2"><h2>1. Ficha técnica y diagrama del cultivo</h2>
-<div id="cropHero" class="crop-hero"></div><div class="healthy-card" id="healthyCard"></div><div class="hint"><b>Referencia ≠ observación.</b> La tarjeta técnica muestra rangos de referencia del catálogo. Los campos que siguen registran únicamente lo observado, medido o informado para este predio/cultivo.</div>
-<h3>3.1 Identificación del cultivo</h3><div class="grid">
-<div><label>Especie / cultivo</label><select id="especie" onchange="profile()"></select></div><div><label>Tipo de cultivo</label><select id="tipo"><option>Transitorio</option><option>Semipermanente</option><option>Permanente</option></select></div>
+<section class="card page hidden" id="sec2">
+<div class="module-label">MÓDULO 1 · FICHA PREVIA AL AVALÚO</div>
+<div class="reference-select">
+  <div class="select-label">Seleccione primero el cultivo que va a valorar</div>
+  <select id="especie" onchange="profile()"></select>
+  <div id="referenceIdentity" class="reference-identity"></div>
+  <div id="referenceTags" class="reference-tags"></div>
+</div>
+<div class="reference-dashboard">
+  <div class="reference-main">
+    <div id="referenceFacts" class="reference-facts"></div>
+    <div id="referenceHealthy" class="visual-card"></div>
+    <div class="visual-card">
+      <h3>Consideraciones importantes al momento del avalúo</h3>
+      <div class="valuation-notes" style="margin-top:8px">
+        <div class="valuation-note"><h4>Objeto exacto</h4><p>Determine si se valora cultivo establecido, producción pendiente, daño, lucro o cultivo junto con infraestructura. Eso define qué debe medirse.</p></div>
+        <div class="valuation-note"><h4>Área realmente cultivada</h4><p>Mida o verifique la superficie ocupada por el cultivo. En invernaderos y módulos no confunda construcción con área productiva.</p></div>
+        <div class="valuation-note"><h4>Edad y etapa</h4><p>Registre la edad y la etapa fenológica y deje claro cómo se establecieron. Ambas cambian la interpretación de producción y vida productiva.</p></div>
+        <div class="valuation-note"><h4>Unidad de producción</h4><p>Identifique el órgano que genera el producto: tubérculo, bulbo, fruto, racimo, mazorca, grano, vaina, árbol, planta, cepa o cama.</p></div>
+        <div class="valuation-note"><h4>Referencia vs. realidad</h4><p>Los rangos del catálogo son referenciales. Variedad, patrón, clima, manejo y sistema pueden modificar sustancialmente la respuesta del cultivo.</p></div>
+        <div class="valuation-note"><h4>Calidad comercial</h4><p>Separe producción biológica de producción comercializable. Calibre, madurez, daño y descarte deben observarse y sustentarse.</p></div>
+        <div class="valuation-note"><h4>Sanidad observable</h4><p>Describa signos, síntomas o daños y su proporción. Mantenga la observación de campo separada de un diagnóstico fitosanitario.</p></div>
+        <div class="valuation-note"><h4>Trazabilidad</h4><p>Conserve fotografías, GPS, registros de cosecha, ventas, costos, documentos de edad y registros técnicos usados para sustentar la conclusión.</p></div>
+      </div>
+    </div>
+  </div>
+  <div id="referencePanel" class="reference-panel"></div>
+</div>
+<div class="hint"><b>Cómo usar esta ficha:</b> primero estudie la referencia técnica y el patrón sano; luego pase a <b>Encargo</b>, <b>Ubicación</b>, <b>Observación</b> y <b>Muestreo</b>. Esta pantalla no captura datos del predio.</div>
+</section>
+
+<section class="card page hidden" id="sec3"><div class="module-label">MÓDULO 4 · OBSERVACIÓN Y CARACTERIZACIÓN DEL CULTIVO</div><h2>4. Observación del cultivo</h2><div class="observation-intro"><b>Referencia arriba, realidad aquí.</b> Aquí se registra únicamente lo observado, medido, documentado o manifestado para el predio inspeccionado.</div><h3>4.1 Identificación y establecimiento observado</h3><div class="grid">
+<div><label>Tipo de cultivo</label><select id="tipo"><option>Transitorio</option><option>Semipermanente</option><option>Permanente</option></select></div>
 <div><label>Variedad / híbrido / cultivar</label><input id="variedad"></div><div><label>Patrón / portainjerto (cuando aplique)</label><input id="patron"></div>
 <div><label>Sistema de producción</label><select id="sistema"><option>Campo abierto</option><option>Invernadero</option><option>Casa malla</option><option>Agroforestal</option><option>Mixto</option><option>Otro</option></select></div>
 <div><label>Unidad biológica principal</label><input id="unidadBiologica" placeholder="Planta, árbol, macolla, cama, m², cepa, etc."></div>
@@ -64,7 +98,7 @@ footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px sol
 <div><label>Área realmente productiva (%)</label><input id="areaProductivaPct" type="number" step="0.1" value="100"></div><div><label>Descarte estimado (%)</label><input id="descarte" type="number" step="0.1" value="0"></div>
 </div>
 
-<h3>3.2 Arquitectura y estructura observada</h3><div class="grid">
+<h3>4.2 Arquitectura y estructura observada</h3><div class="grid">
 <div><label>Altura media observada (m)</label><input id="alturaObs" type="number" step="0.01"></div><div><label>Diámetro de copa / cobertura (m)</label><input id="copaObs" type="number" step="0.01"></div>
 <div><label>Diámetro de tronco / tallo (cm)</label><input id="troncoObs" type="number" step="0.01"></div><div><label>Diámetro de pseudotallo / estructura equivalente</label><input id="estructuraObs" type="number" step="0.01"></div>
 <div><label>Sistema de conducción / tutorado</label><input id="conduccionObs" placeholder="Libre, espaldera, tutor, poste, emparrado, etc."></div><div><label>Estado de soporte</label><select id="soporteEstado"><option>No aplica</option><option>Bueno</option><option>Regular</option><option>Deficiente</option></select></div>
@@ -72,13 +106,13 @@ footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px sol
 <div><label>Densidad real calculada (unidades/ha)</label><input id="densidadReal" type="number" step="1"></div><div><label>Uniformidad del cultivo</label><select id="uniformidad"><option>Alta</option><option>Media</option><option>Baja</option><option>No determinada</option></select></div>
 </div>
 
-<h3>3.3 Estado de desarrollo y productividad</h3><div class="grid">
+<h3>4.3 Estado de desarrollo y productividad</h3><div class="grid">
 <div><label>Vigor observado</label><select id="vigor"><option>Alto</option><option>Medio</option><option>Bajo</option><option>No determinado</option></select></div><div><label>Condición productiva observada</label><select id="condicionProductiva"><option>Alta</option><option>Media</option><option>Baja</option><option>No determinada</option></select></div>
 <div><label>Renovación / resiembra</label><select id="renovacion"><option>No aplica</option><option>No observada</option><option>Parcial</option><option>Programada</option><option>Reciente</option><option>Avanzada</option></select></div><div><label>Edad productiva remanente estimada (meses)</label><input id="vidaRemanenteTecnica" type="number"></div>
 <div class="full"><label>Observaciones sobre desarrollo, edad, uniformidad y productividad</label><textarea id="desarrolloObs"></textarea></div>
 </div>
 
-<h3>3.4 Manejo y condiciones del cultivo</h3><div class="grid">
+<h3>4.4 Manejo y condiciones del cultivo</h3><div class="grid">
 <div><label>Riego</label><select id="riego"><option>No aplica / lluvia</option><option>Gravedad</option><option>Aspersión</option><option>Goteo</option><option>Microaspersión</option><option>Mixto</option><option>No determinado</option></select></div><div><label>Fertirriego</label><select id="fertirriego"><option>No</option><option>Sí</option><option>No determinado</option></select></div>
 <div><label>Frecuencia de riego</label><input id="frecuenciaRiego" placeholder="Ej. diario, cada 3 días..."></div><div><label>Sombra</label><input id="sombraObs" placeholder="% o descripción del sistema"></div>
 <div><label>Fertilización / nutrición</label><input id="nutricionObs" placeholder="Convencional, orgánica, plan técnico, etc."></div><div><label>Poda / deschuponado / manejo de copa</label><input id="podaObs"></div>
@@ -87,7 +121,7 @@ footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px sol
 <div class="full"><label>Observaciones de manejo</label><textarea id="manejoObs"></textarea></div>
 </div>
 
-<h3>3.5 Estado, sanidad y afectaciones observables</h3><div class="grid">
+<h3>4.5 Estado, sanidad y afectaciones observables</h3><div class="grid">
 <div><label>Estado general observable</label><select id="estado"><option>Bueno</option><option>Regular</option><option>Deficiente</option><option>Muy deficiente</option><option>No determinado</option></select></div><div><label>Intensidad de afectación observable</label><select id="intensidadAfectacion"><option>Ninguna observada</option><option>Leve</option><option>Moderada</option><option>Alta</option><option>Severa</option><option>No determinada</option></select></div>
 <div><label>Área afectada estimada (%)</label><input id="areaAfectadaPct" type="number" step="0.1"></div><div><label>Unidades afectadas estimadas (%)</label><input id="unidadesAfectadasPct" type="number" step="0.1"></div>
 <div><label>Parte afectada</label><input id="parteAfectada" placeholder="Hojas, tallos, frutos, raíces, bulbos, flores, etc."></div><div><label>Origen de la información sobre afectación</label><select id="fuenteAfectacion"><option>Observación directa</option><option>Documento / diagnóstico aportado</option><option>Manifestación de tercero</option><option>Mixta</option></select></div>
@@ -98,9 +132,7 @@ footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px sol
 <div id="profileFields"></div>
 <div id="technicalCard" class="hint" style="display:none;margin-top:12px"></div>
 <div id="comparisonCard" class="card" style="display:none;margin-top:12px;background:#fbfaf7"><h3>Comparación técnica — referencia vs. observación</h3><div id="comparisonContent"></div><p class="small">La comparación es descriptiva. Un dato fuera del rango de referencia no constituye por sí mismo un diagnóstico ni una conclusión de valor.</p></div>
-</section>
-
-<section class="card page hidden" id="sec3"><h2>4. Muestreo específico del cultivo</h2>
+</section><section class="card page hidden" id="sec9"><h2>5. Muestreo específico del cultivo</h2>
 <div class="sample-controls">
 <div class="grid">
 <div><label>Método de muestreo</label><select id="metodoMuestreo"><option>Recorrido dirigido</option><option>Aleatorio</option><option>Sistemático</option><option>Estratificado</option><option>Mixto</option></select></div>
@@ -120,6 +152,141 @@ footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px sol
 <section class="card page hidden" id="sec4"><h2>5. Producción y ciclo económico</h2><div class="grid"><div><label>Cosecha acumulada (kg)</label><input id="cosechado" type="number" step="0.01" value="0"></div><div><label>Producción pendiente (kg)</label><input id="pendiente" type="number" step="0.01" value="0"></div><div><label>Producción comercializable (%)</label><input id="comercial" type="number" step="0.1" value="100"></div><div><label>Rendimiento esperado (kg/planta o árbol)</label><input id="rendimiento" type="number" step="0.001"></div><div><label>Producción calculada (kg)</label><input id="prodCalculada" readonly></div><div><label>Cosechas realizadas (n.º)</label><input id="numCosechas" type="number"></div><div><label>Frecuencia de cosecha</label><input id="frecuencia" placeholder="Ej. semanal"></div><div><label>Duración / ciclo productivo</label><input id="duracionCiclo" placeholder="Ej. 8 meses / 4 años"></div><div><label>Producción anual esperada (kg)</label><input id="prodAnual" type="number" step="0.01"></div><div><label>Vida productiva remanente (meses)</label><input id="vidaRemanente" type="number"></div><div class="full"><label>Cómo se obtuvo la producción pendiente</label><textarea id="metodoProduccion" placeholder="Muestreo, registros históricos, conteo, estimación técnica, manifestación del productor, etc."></textarea></div></div>
 <h3>Precio y comercialización</h3><div class="grid"><div><label>Precio esperado finca ($/kg)</label><input id="precio" type="number"></div><div><label>Precio mínimo observado</label><input id="precioMin" type="number"></div><div><label>Precio máximo observado</label><input id="precioMax" type="number"></div><div><label>Unidad de comercialización</label><input id="unidadVenta" placeholder="kg, bulto, canastilla, arroba..." value="kg"></div><div class="full"><label>Comprador / canal</label><input id="comprador"></div><div class="full"><label>Notas de mercado</label><textarea id="notasMercado"></textarea></div></div></section>
 
+
+<section class="card page hidden" id="sec10">
+  <div class="module-label">MÓDULO 6 · CÁLCULO FÍSICO</div>
+  <h2>6. Cálculo de producción y magnitudes físicas</h2>
+  <div class="hint"><b>Objetivo:</b> transformar el levantamiento de campo en una base física trazable para la valoración. El resultado depende de los datos observados, del método seleccionado y de la evidencia disponible.</div>
+  <h3>6.1 Método de estimación</h3>
+  <div class="grid">
+    <div><label>Fuente principal para la producción</label>
+      <select id="metodoCalculoFisico" onchange="calcPhysical()">
+        <option value="registro">Producción pendiente registrada / determinada</option>
+        <option value="unidad">Unidades productivas × rendimiento por unidad</option>
+        <option value="hectarea">Área efectiva × rendimiento por hectárea</option>
+        <option value="muestreo">Estimación derivada del muestreo</option>
+      </select>
+    </div>
+    <div><label>Área efectiva considerada (ha)</label><input id="areaEfectivaCalc" type="number" step="0.0001" readonly></div>
+    <div><label>Unidades productivas estimadas</label><input id="unidadesProductivasCalc" type="number" step="0.1" readonly></div>
+    <div><label>Rendimiento por unidad (kg/unidad)</label><input id="rendUnidadCalc" type="number" step="0.0001"></div>
+    <div><label>Rendimiento por hectárea (kg/ha)</label><input id="rendHaCalc" type="number" step="0.01"></div>
+    <div><label>Producción pendiente registrada (kg)</label><input id="pendienteCalc" type="number" step="0.01" readonly></div>
+    <div><label>Producción estimada por muestreo (kg)</label><input id="muestreoCalc" type="number" step="0.01"></div>
+    <div><label>Descarte / no comercializable (%)</label><input id="descarteCalc" type="number" step="0.1"></div>
+  </div>
+
+  <div class="card" style="background:#fbfaf7;margin-top:12px">
+    <h3>6.1A Resultado automático del muestreo</h3>
+    <div class="grid">
+      <div><label>Promedio estimado por unidad</label><input id="promedioMuestreo" readonly></div>
+      <div><label>Producción equivalente por ha</label><input id="rendHaMuestreo" readonly></div>
+      <div><label>Coeficiente de variación de la muestra</label><input id="cvMuestreo" readonly></div>
+      <div><label>Completitud de datos</label><input id="completitudMuestreo" readonly></div>
+      <div class="full"><label>Lectura técnica del muestreo</label><textarea id="lecturaMuestreo" readonly></textarea></div>
+    </div>
+  </div>
+  <h3>6.2 Resultado físico</h3>
+  <div class="kpis">
+    <div class="kpi"><span>Producción física base</span><strong id="kProdFisica">0 kg</strong></div>
+    <div class="kpi"><span>Producción comercializable</span><strong id="kProdComercial">0 kg</strong></div>
+    <div class="kpi"><span>Rendimiento equivalente</span><strong id="kRendEquiv">—</strong></div>
+    <div class="kpi"><span>Unidades productivas</span><strong id="kUnidadesProd">0</strong></div>
+  </div>
+  <div class="card" style="background:#fbfaf7;margin-top:12px">
+    <h3>6.3 Trazabilidad del cálculo</h3>
+    <div class="grid">
+      <div><label>Calidad de evidencia</label><select id="calidadCalculo"><option>Alta — registros + campo</option><option>Media — campo + soportes parciales</option><option>Limitada — estimación / manifestación</option></select></div>
+      <div><label>Fecha de corte del cálculo</label><input id="fechaCorteCalculo" type="date"></div>
+      <div class="full"><label>Explicación del procedimiento</label><textarea id="notaCalculoFisico" placeholder="Explique de dónde sale la cantidad, qué muestra se utilizó, cómo se extrapoló y qué limitaciones tiene."></textarea></div>
+    </div>
+  </div>
+</section>
+
+<section class="card page hidden" id="sec11">
+  <div class="module-label">MÓDULO 7 · VALORACIÓN ECONÓMICA</div>
+  <h2>7. Calculadora de valoración</h2>
+  <div class="hint"><b>Importante:</b> esta sección separa la aritmética del criterio valuatorio. El aplicativo calcula los componentes que se introducen; la selección y justificación del método aplicable corresponde al avalúo y a la normativa/procedimiento vigente.</div>
+  <div class="grid">
+    <div><label>Objeto económico</label><select id="objetoValoracion" onchange="updateValuation()">
+      <option value="pendiente">Producción pendiente / frutos pendientes</option>
+      <option value="establecido">Cultivo establecido — componente de costo</option>
+      <option value="afectacion">Pérdida por afectación — antes vs. después</option>
+      <option value="renta">Capitalización de renta — indicador</option>
+      <option value="mercado">Valor de mercado — ingreso manual</option>
+    </select></div>
+    <div><label>Fecha de valoración</label><input id="fechaValoracion" type="date" onchange="updateValuation()"></div>
+  </div>
+
+  <div id="valuationPendiente" class="valuation-block">
+    <h3>7.1 Producción pendiente</h3>
+    <div class="grid">
+      <div><label>Producción física base (kg)</label><input id="valKg" type="number" step="0.01" readonly></div>
+      <div><label>Porcentaje comercializable (%)</label><input id="valComPct" type="number" step="0.1" value="100" oninput="updateValuation()"></div>
+      <div><label>Precio finca esperado ($/kg)</label><input id="valPrecio" type="number" step="1" oninput="updateValuation()"></div>
+      <div><label>Costos pendientes para completar ($)</label><input id="valCostPend" type="number" step="1" oninput="updateValuation()"></div>
+      <div><label>Costos de comercialización atribuibles ($)</label><input id="valCostCom" type="number" step="1" oninput="updateValuation()"></div>
+      <div class="full"><label>Fuente / sustento del precio</label><textarea id="valFuentePrecio" placeholder="Productor, comprador, factura, primera venta, mercado local, serie de observaciones, etc."></textarea></div>
+    </div>
+  </div>
+
+  <div id="valuationEstablecido" class="valuation-block hidden">
+    <h3>7.2 Cultivo establecido — componente de costo</h3>
+    <div class="grid">
+      <div><label>Costo de formación / reposición de referencia ($)</label><input id="valCostoBase" type="number" step="1" oninput="updateValuation()"></div>
+      <div><label>Ajuste técnico documentado (%)</label><input id="valAjusteCosto" type="number" step="0.1" value="0" oninput="updateValuation()"></div>
+      <div><label>Costos incurridos registrados ($)</label><input id="valCostIncurridos" type="number" step="1" readonly></div>
+      <div><label>Costos pendientes registrados ($)</label><input id="valCostRegistradosPend" type="number" step="1" readonly></div>
+      <div class="full"><label>Justificación del costo base y del ajuste</label><textarea id="valNotaCosto" placeholder="Fuente del costo, fecha, unidad, sistema productivo y sustento del ajuste."></textarea></div>
+    </div>
+  </div>
+
+  <div id="valuationAfectacion" class="valuation-block hidden">
+    <h3>7.3 Pérdida por afectación</h3>
+    <div class="grid">
+      <div><label>Valor sin afectación ($)</label><input id="valAntes" type="number" step="1" oninput="updateValuation()"></div>
+      <div><label>Valor con afectación ($)</label><input id="valDespues" type="number" step="1" oninput="updateValuation()"></div>
+      <div><label>Costos adicionales atribuibles a la afectación ($)</label><input id="valCostDanio" type="number" step="1" value="0" oninput="updateValuation()"></div>
+      <div><label>Porcentaje de pérdida física informado (%)</label><input id="valPerdidaPct" type="number" step="0.1" readonly></div>
+      <div class="full"><label>Descripción de la afectación y nexo causal sustentado</label><textarea id="valNotaDanio" placeholder="Describa el hecho, evidencia, periodo, parte afectada y cómo se establecieron los valores antes/después."></textarea></div>
+    </div>
+  </div>
+
+  <div id="valuationRenta" class="valuation-block hidden">
+    <h3>7.4 Capitalización de renta — indicador financiero</h3>
+    <div class="grid">
+      <div><label>Ingreso neto anual estabilizado ($/año)</label><input id="valIngresoNetoAnual" type="number" step="1" oninput="updateValuation()"></div>
+      <div><label>Tasa de capitalización (%)</label><input id="valTasaCap" type="number" step="0.01" oninput="updateValuation()"></div>
+      <div class="full"><label>Nota metodológica</label><textarea id="valNotaRenta" placeholder="Separación de renta atribuible a tierra, cultivo y capital; periodo; estabilidad; soporte de ingresos y costos."></textarea></div>
+    </div>
+  </div>
+
+  <div id="valuationMercado" class="valuation-block hidden">
+    <h3>7.5 Valor de mercado — ingreso controlado</h3>
+    <div class="grid">
+      <div><label>Valor unitario de referencia ($/ha, $/planta, etc.)</label><input id="valUnidadMercado" type="number" step="1" oninput="updateValuation()"></div>
+      <div><label>Cantidad de unidades valoradas</label><input id="valCantMercado" type="number" step="0.01" oninput="updateValuation()"></div>
+      <div class="full"><label>Fuente y ajuste</label><textarea id="valNotaMercado" placeholder="Comparable, mercado local, fecha, unidad, similitudes/diferencias y ajustes."></textarea></div>
+    </div>
+  </div>
+
+  <h3>7.6 Resultado de la calculadora</h3>
+  <div class="kpis">
+    <div class="kpi"><span>Ingreso / valor bruto</span><strong id="kValBruto">$0</strong></div>
+    <div class="kpi"><span>Costos / deducciones</span><strong id="kValCostos">$0</strong></div>
+    <div class="kpi"><span>Resultado calculado</span><strong id="kValResultado">$0</strong></div>
+    <div class="kpi"><span>Indicador / pérdida</span><strong id="kValIndicador">—</strong></div>
+  </div>
+  <div class="card" style="background:#fbfaf7;margin-top:12px">
+    <h3>7.7 Conclusión del módulo</h3>
+    <div class="grid">
+      <div><label>Nivel de certeza del cálculo</label><select id="certezaValoracion"><option>Alta</option><option>Media</option><option>Limitada</option></select></div>
+      <div><label>Valor utilizado en informe ($)</label><input id="valorParaInforme" type="number" step="1"></div>
+      <div class="full"><label>Justificación / observaciones del avaluador</label><textarea id="justificacionValoracion" placeholder="Explique método, base, fecha, fuentes, ajustes, exclusiones y por qué el resultado es coherente con el objeto de valoración."></textarea></div>
+    </div>
+  </div>
+</section>
+
 <section class="card page hidden" id="sec5"><h2>6. Costos del cultivo</h2><p class="small">Distingue costos ya incurridos de costos necesarios para completar la producción pendiente. Evita duplicar conceptos.</p><div class="tablewrap"><table><thead><tr><th>Concepto</th><th>Incurrido $</th><th>Pendiente $</th><th>Fuente / soporte</th><th></th></tr></thead><tbody id="costs"></tbody></table></div><div class="toolbar"><button class="secondary" onclick="addCost()">＋ Costo</button></div></section>
 
 <section class="card page hidden" id="sec6"><h2>7. Infraestructura y activos asociados</h2><p class="small">Registra por separado el cultivo y los bienes físicos: invernadero, riego, reservorios, bombas, fertirriego, tutorado, cerramientos, etc.</p><div class="tablewrap"><table><thead><tr><th>Elemento</th><th>Cant.</th><th>Dimensión / unidad</th><th>Edad</th><th>Estado</th><th>Observación</th><th></th></tr></thead><tbody id="infra"></tbody></table></div><button class="secondary" onclick="addInfra()">＋ Elemento</button></section>
@@ -134,7 +301,7 @@ footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px sol
 </main>
 <footer><button id="prevBtn" class="secondary" onclick="prev()">‹ Anterior</button><button onclick="save()">💾 Guardar</button><button id="nextBtn" class="secondary" onclick="next()">Siguiente ›</button></footer>
 <script>
-const names=['Cultivo','Encargo','Ubicación','Muestreo','Producción','Costos','Infraestructura','Evidencia','Cierre'],pageIds=['sec2','sec0','sec1','sec3','sec4','sec5','sec6','sec7','sec8'],pages=pageIds.map(id=>document.getElementById(id));let page=0,photoData=[];
+const names=['Ficha','Encargo','Ubicación','Observación','Muestreo','Producción','Cálculo físico','Valoración','Costos','Infraestructura','Evidencia','Cierre'],pageIds=['sec2','sec0','sec1','sec3','sec9','sec4','sec10','sec11','sec5','sec6','sec7','sec8'],pages=pageIds.map(id=>document.getElementById(id));let page=0,photoData=[];
 const CATALOG=[
 {id:'papa',name:'Papa',scientific:'Solanum tuberosum',family:'Solanaceae',group:'Tubérculos',product:'Tubérculo',cycle:'Transitorio',height:'0,4–0,8 m',spacing:'0,80–1,20 x 0,25–0,40 m',density:'20.000–50.000/ha',start:'3–5 meses',life:'Variable',phenology:'Emergencia → tuberización → llenado → madurez',special:'tubérculos/planta; peso; calibre; % comercial; daños; madurez',notes:'Calibre y daño del tubérculo'},
 {id:'cana_panelera',name:'Caña panelera',scientific:'Saccharum officinarum',family:'Poaceae',group:'Industriales',product:'Tallo',cycle:'Permanente/semipermanente',height:'2–4 m',spacing:'1,00–1,50 m',density:'Según sistema',start:'10–18 meses',life:'Multianual',phenology:'Establecimiento → macollamiento → elongación → madurez → corte',special:'tallos/cepa; diámetro; altura; edad; madurez; socas',notes:'Edad del lote y número de socas'},
@@ -333,19 +500,36 @@ function renderSampling(){
 function initCatalog(){especie.innerHTML=CATALOG.map(x=>`<option value="${x.id}">${x.name}</option>`).join('');}
 function profile(){
  let k=especie.value,c=CATALOG.find(x=>x.id===k)||CATALOG[0];
- tipo.value=c.cycle.includes('Transitorio')?'Transitorio':(c.cycle.includes('Semipermanente')&&!c.cycle.includes('Permanente')?'Semipermanente':'Permanente');
- unidadBiologica.value=unidadBiologica.value||c.product||'';
- const fields=specialFields[k]||[];
- profileFields.innerHTML=(fields.length?'<h3>3.6 Variables especiales del cultivo</h3><div class="grid">'+fields.map(x=>`<div><label>${x[0]}</label><input id="${x[1]}" type="${x[2]||'text'}"></div>`).join('')+'</div>':'<div class="hint">Este cultivo no tiene variables especiales adicionales cargadas. Registre cualquier variable particular en observaciones y en el muestreo.</div>');
  const iconMap={papa:'🥔',cana_panelera:'🎋',cafe:'☕',maiz:'🌽',cebolla_bulbo:'🧅',arveja:'🫛',cacao:'🍫',zanahoria:'🥕',cebolla_junca:'🌿',tomate:'🍅',frijol:'🫘',cebada:'🌾',trigo:'🌾',tomate_arbol:'🍅',mora:'🫐',pera:'🍐',platano:'🍌',manzana:'🍎',durazno:'🍑',ciruela:'🟣',limon:'🍋',uchuva:'🟠',pitahaya:'🌵',fresa:'🍓',lulo:'🟢',ajo:'🧄'};
- cropHero.innerHTML=`<div class="crop-select-card"><label>Cultivo seleccionado — este es el primer dato del expediente</label><div class="crop-title"><div class="crop-icon">${iconMap[k]||'🌱'}</div><div><h3>${c.name}</h3><p>${c.scientific||'Nombre científico no cargado'}</p></div></div><div class="ref-grid"><div class="ref-item"><span>Familia</span><strong>${c.family||'—'}</strong></div><div class="ref-item"><span>Grupo</span><strong>${c.group||'—'}</strong></div><div class="ref-item"><span>Producto aprovechable</span><strong>${c.product||'—'}</strong></div><div class="ref-item"><span>Ciclo</span><strong>${c.cycle||'—'}</strong></div><div class="ref-item"><span>Altura referencia</span><strong>${c.height||'—'}</strong></div><div class="ref-item"><span>Marco referencia</span><strong>${c.spacing||'—'}</strong></div><div class="ref-item"><span>Densidad referencia</span><strong>${c.density||'—'}</strong></div><div class="ref-item"><span>Inicio producción</span><strong>${c.start||'—'}</strong></div><div class="ref-item"><span>Vida útil/productiva</span><strong>${c.life||'—'}</strong></div><div class="ref-item"><span>Fenología</span><strong>${c.phenology||'—'}</strong></div></div></div><div class="diagram-panel"><div id="diagramCard"></div></div>`;
- document.getElementById('diagramCard').innerHTML=`<div class="diagram-head"><h3>Diagrama de referencia — ${c.name}</h3><span class="small">Cultivo sano · esquema técnico</span></div><div class="diagram-wrap">${svgDiagram(c)}</div><div class="diagram-note">Representación esquemática, no a escala. Identifica la arquitectura y el órgano/producto que se debe observar o medir en campo.</div>`;
- const select=document.getElementById('especie');select.value=k;
+ referenceIdentity.innerHTML=`<div class="reference-icon">${iconMap[k]||'🌱'}</div><div><h2>${c.name}</h2><p>${c.scientific||'Nombre científico no cargado'}</p></div>`;
+ referenceTags.innerHTML=[c.family,c.group,'Producto: '+(c.product||'—'),'Ciclo: '+(c.cycle||'—')].map(x=>`<span>${x}</span>`).join('');
+ const facts=[['Altura de referencia',c.height],['Marco de plantación',c.spacing],['Densidad de referencia',c.density],['Inicio de producción',c.start],['Vida útil / productiva',c.life],['Órgano aprovechable',c.product],['Arquitectura / hábito',habitText(c)],['Fuente base',sourceShort(c)]];
+ referenceFacts.innerHTML=facts.map((x,i)=>`<div class="reference-fact ${i===7?'wide':''}"><span>${x[0]}</span><strong>${x[1]||'—'}</strong></div>`).join('');
+ referencePhenology.innerHTML=`<div class="visual-card" style="padding:0;border:0;box-shadow:none"><h3>Secuencia fenológica de referencia</h3><div class="visual-sub">Úsala para ubicar mentalmente qué debería estar ocurriendo en la etapa de visita.</div>${svgPhenology(c)}</div>`;
+ referenceHealthy.innerHTML=`<h3>🟢 ¿Cómo debería verse un cultivo sano?</h3><div class="visual-sub">Criterios observables de referencia para orientar la inspección; no constituyen diagnóstico.</div><div class="healthy-checks">${healthyChecklist(c).map(x=>`<div class="healthy-check"><b>${x[0]}</b>${x[1]}</div>`).join('')}</div>`;
+ referencePanel.innerHTML=`<div class="visual-card"><h3>Diagrama 1 · Arquitectura del cultivo</h3><div class="visual-sub">Forma, estructura y órgano productivo que conviene reconocer antes de la visita.</div><div class="diagram-wrap tall">${svgDiagram(c)}</div><div class="geometry-note">Esquema referencial, no a escala. La estructura real debe comprobarse en campo.</div></div><div class="diagram-grid"><div class="visual-card"><h3>Diagrama 2 · Siembra y espaciamiento</h3><div class="visual-sub">Formas usuales y rango de referencia del catálogo.</div><div class="diagram-wrap">${svgPlanting(c)}</div></div><div class="visual-card"><h3>Diagrama 3 · Producto y unidad de cosecha</h3><div class="visual-sub">Qué unidad conviene contar, pesar, medir o clasificar.</div><div class="diagram-wrap">${svgHarvest(c)}</div></div></div>`;
+ const fields=specialFields[k]||[];
+ profileFields.innerHTML=(fields.length?'<h3>4.6 Variables especiales del cultivo</h3><div class="grid">'+fields.map(x=>`<div><label>${x[0]}</label><input id="${x[1]}" type="${x[2]||'text'}"></div>`).join('')+'</div>':'<div class="hint">Este cultivo no tiene variables especiales adicionales cargadas. Registre cualquier variable particular en observaciones y muestreo.</div>');
+ tipo.value=c.cycle.includes('Transitorio')?'Transitorio':(c.cycle.includes('Semipermanente')&&!c.cycle.includes('Permanente')?'Semipermanente':'Permanente');
+ if(!unidadBiologica.value) unidadBiologica.value=c.product||'';
  technicalCard.style.display='block';
- technicalCard.innerHTML=`<strong>Referencia técnica de trabajo</strong><br><b>${c.name}</b> · ${c.scientific||'sin nombre científico'}<br>Altura: ${c.height||'—'} · Marco: ${c.spacing||'—'} · Densidad: ${c.density||'—'}<br>Inicio productivo: ${c.start||'—'} · Vida: ${c.life||'—'}<br>Fenología: ${c.phenology||'—'}<br><b>Variable especial:</b> ${c.special||'—'}<br><span class="small">Los valores son referencias de trabajo y deben verificarse antes de tratarlos como parámetros definitivos del avalúo.</span>`;
- healthyCard.innerHTML=`<h3>🟢 Patrón sano de referencia</h3><div>${healthyIndicators(c)}</div><div class="small" style="margin-top:5px">Sirve para orientar la observación. No sustituye la inspección ni constituye un diagnóstico.</div>`;
- renderSampling();updateComparison();
+ technicalCard.innerHTML=`<strong>Referencia técnica de trabajo:</strong> ${c.name} · ${c.scientific||'—'}<br>Altura: ${c.height||'—'} · Marco: ${c.spacing||'—'} · Densidad: ${c.density||'—'} · Inicio productivo: ${c.start||'—'}<br>Fenología: ${c.phenology||'—'}<br><b>Variable especial:</b> ${c.special||'—'}<br><span class="small">Las referencias deben verificarse según variedad, patrón, sistema y condiciones locales antes de utilizarlas como parámetro definitivo.</span>`;
+ updateComparison();renderSampling();
 }
+function habitText(c){if(['pera','manzana','durazno','ciruela','limon','cafe','cacao','tomate_arbol','lulo'].includes(c.id))return 'Arbóreo / arbustivo';if(['mora','arveja','uchuva','tomate','frijol','pitahaya'].includes(c.id))return 'Conducción / tutorado';if(['cebada','trigo','maiz'].includes(c.id))return 'Herbáceo erecto';if(['papa','zanahoria','cebolla_bulbo','ajo'].includes(c.id))return 'Roseta / órgano subterráneo';return 'Variable según sistema';}
+function sourceShort(c){return c.id==='cafe'?'Cenicafé / referencias técnicas':c.id==='limon'?'ICA / referencias fitosanitarias':'AGROSAVIA / UPRA / catálogo de trabajo';}
+function spacingNums(text){const a=String(text||'').replace(',', '.').match(/\d+(?:\.\d+)?/g)||[];return a.map(Number).slice(0,2);}
+function svgPlanting(c){
+ const nums=spacingNums(c.spacing), a=nums[0]||1, b=nums[1]||a; const tree=['pera','manzana','durazno','ciruela','limon','cafe','cacao','tomate_arbol','platano','lulo'].includes(c.id); const trellis=['mora','arveja','uchuva','tomate','pitahaya'].includes(c.id); const bed=['papa','cebolla_bulbo','zanahoria','ajo','cebolla_junca','fresa','maiz','frijol','cebada','trigo'].includes(c.id);
+ let svg=`<svg viewBox="0 0 520 300" role="img" aria-label="Diagrama de siembra">`;
+ if(tree){svg+=`<rect x="55" y="58" width="410" height="180" rx="14" fill="#f3eee5" stroke="#d7cbbb"/><path d="M55 148H465 M175 58V238 M295 58V238 M415 58V238" stroke="#b9a78e" stroke-width="1.5" stroke-dasharray="5 6"/>`;for(const [x,y] of [[115,108],[235,108],[355,108],[115,198],[235,198],[355,198]])svg+=`<circle cx="${x}" cy="${y}" r="22" fill="#75a25a"/><circle cx="${x-7}" cy="${y-6}" r="10" fill="#638d4d"/>`;svg+=`<path d="M115 43V58 M235 43V58" stroke="#9a8569" stroke-width="2"/><text x="175" y="39" text-anchor="middle" font-family="Arial" font-size="13" fill="#4a4037">${esc(a)} m entre plantas / árboles</text><path d="M480 148H496 M480 238H496" stroke="#9a8569" stroke-width="2"/><text x="510" y="196" text-anchor="end" font-family="Arial" font-size="13" fill="#4a4037">${esc(b)} m entre hileras</text><text x="260" y="278" text-anchor="middle" font-family="Arial" font-size="12" fill="#6f665e">Marco cuadrangular/rectangular de referencia</text>`;
+ }else if(trellis){svg+=`<rect x="45" y="65" width="430" height="170" rx="12" fill="#f3eee5" stroke="#d7cbbb"/><path d="M85 55V245 M435 55V245 M85 88H435 M85 142H435 M85 196H435" stroke="#8b7454" stroke-width="7"/><path d="M102 166 C170 114 245 213 315 154 C359 124 394 137 425 163" stroke="#5d864b" stroke-width="8" fill="none"/><circle cx="153" cy="148" r="10" fill="#78a15a"/><circle cx="279" cy="155" r="10" fill="#78a15a"/><circle cx="378" cy="150" r="10" fill="#78a15a"/><text x="260" y="34" text-anchor="middle" font-family="Arial" font-size="13" fill="#4a4037">${esc(b||a)} m aprox. entre puntos según sistema de conducción</text><text x="260" y="278" text-anchor="middle" font-family="Arial" font-size="12" fill="#6f665e">Espaldera / tutorado / soporte cuando aplica</text>`;
+ }else{svg+=`<rect x="50" y="58" width="420" height="180" rx="12" fill="#eadfc9" stroke="#d3c2a9"/><path d="M50 88H470 M50 118H470 M50 148H470 M50 178H470 M50 208H470" stroke="#b59b77" stroke-width="2"/><g fill="#6e9550">${[82,142,202,262,322,382].map(x=>`<circle cx="${x}" cy="103" r="7"/><circle cx="${x}" cy="163" r="7"/><circle cx="${x}" cy="223" r="7"/>`).join('')}</g><path d="M52 44H468" stroke="#8e7758" stroke-width="2"/><text x="260" y="32" text-anchor="middle" font-family="Arial" font-size="13" fill="#4a4037">${esc(a)} m entre hileras · ${esc(b||a)} m entre plantas</text><text x="260" y="278" text-anchor="middle" font-family="Arial" font-size="12" fill="#6f665e">Siembra en hileras/camas; verificar la densidad real del lote</text>`;}
+ return svg+'</svg>'; }
+function svgPhenology(c){const labs=(c.phenology||'Establecimiento → desarrollo → producción → cosecha').split('→').map(x=>x.trim()).filter(Boolean);return `<div class="phenology-bar">${labs.map((x,i)=>`<div class="phenology-step"><strong>${i+1}</strong>${esc(x)}</div>`).join('')}</div>`;}
+function svgHarvest(c){let p=c.product||'Producto',shape='circle',fill='#d7a34b',label=p; if(/bulbo/i.test(p)){shape='bulb';fill='#c9a36a';label='Bulbo';}else if(/tubérculo/i.test(p)){shape='tuber';fill='#c79b6b';label='Tubérculo';}else if(/racimo/i.test(p)){shape='bunch';fill='#b98946';label='Racimo';}else if(/grano/i.test(p)){shape='grain';fill='#d7b65d';label='Grano';}else if(/vaina/i.test(p)){shape='pod';fill='#77a655';label='Vaina';}else if(/mazorca/i.test(p)){shape='cob';fill='#e1c56a';label='Mazorca';}let body='';if(shape==='bunch')body=`<g fill="${fill}" stroke="#8b6841" stroke-width="2">${[190,220,250,280,310].map((x,i)=>`<ellipse cx="${x}" cy="${145+i*18}" rx="18" ry="26"/>`).join('')}</g>`;else if(shape==='grain')body=`<g fill="${fill}" stroke="#a27f2f" stroke-width="1">${[180,205,230,255,280,305,330].map((x,i)=>`<ellipse cx="${x}" cy="${130+(i%2)*22}" rx="10" ry="17" transform="rotate(28 ${x} ${130+(i%2)*22})"/>`).join('')}</g>`;else if(shape==='pod')body=`<path d="M170 170 C225 90 310 90 360 160 C300 170 240 180 170 170Z" fill="${fill}" stroke="#51763d" stroke-width="3"/>`;else if(shape==='cob')body=`<ellipse cx="260" cy="148" rx="55" ry="95" fill="${fill}" stroke="#9b7b36" stroke-width="3"/><path d="M215 80 Q180 140 218 218 M305 80 Q340 140 302 218" fill="none" stroke="#6d8b45" stroke-width="12"/>`;else if(shape==='bulb')body=`<path d="M230 95 Q260 72 290 95 Q318 125 306 180 Q293 215 260 224 Q227 215 214 180 Q202 125 230 95Z" fill="${fill}" stroke="#98754e" stroke-width="3"/><path d="M260 80V55" stroke="#668d49" stroke-width="8"/>`;else if(shape==='tuber')body=`<ellipse cx="260" cy="150" rx="78" ry="52" fill="${fill}" stroke="#9b764d" stroke-width="3"/><circle cx="225" cy="138" r="4" fill="#8c6645"/><circle cx="278" cy="166" r="4" fill="#8c6645"/>`;else body=`<circle cx="260" cy="145" r="62" fill="${fill}" stroke="#9a6a40" stroke-width="3"/><path d="M260 82V62" stroke="#668d49" stroke-width="7"/>`;
+ return `<svg viewBox="0 0 520 250" role="img" aria-label="Unidad de cosecha"><g font-family="Arial" fill="#4a4037"><text x="260" y="225" text-anchor="middle" font-size="15" font-weight="700">${esc(label)}</text><text x="260" y="245" text-anchor="middle" font-size="11" fill="#71685f">Contar · medir · pesar · clasificar</text></g>${body}</svg>`;}
+function healthyChecklist(c){const tree=['pera','manzana','durazno','ciruela','limon','cafe','cacao','tomate_arbol','platano','lulo'].includes(c.id);const root=['papa','cebolla_bulbo','ajo','zanahoria'].includes(c.id);const cereal=['maiz','cebada','trigo'].includes(c.id);const trellis=['tomate','mora','arveja','uchuva','pitahaya'].includes(c.id);let out=[['Arquitectura','Estructura proporcional y relativamente uniforme para la etapa y el sistema de manejo.'],['Follaje / parte aérea','Coloración y desarrollo funcionales, sin pérdida generalizada de área foliar ni decaimiento evidente.'],['Uniformidad','La mayor parte de las unidades del lote presentan un comportamiento semejante, salvo variación explicable por manejo o microambiente.'],['Producción','Flores, frutos, racimos, mazorcas, espigas o bulbos corresponden al estado de desarrollo esperado para la etapa.'],['Sanidad visible','No se observan daños generalizados, necrosis extensas, pudriciones evidentes o afectaciones estructurales dominantes.'],['Producto aprovechable','El órgano cosechable muestra desarrollo acorde con el ciclo y una proporción razonable de unidades potencialmente comerciales.']]; if(tree)out[0][1]='Copa equilibrada, ramas/tallos firmes y desarrollo acorde con edad, patrón y conducción.'; if(root)out[3][1]='La parte aérea mantiene desarrollo compatible con la etapa y el órgano subterráneo avanza hacia tamaño/calibre de cosecha.'; if(cereal)out[0][1]='Tallos relativamente firmes y uniformes, con baja incidencia de volcamiento/acame para la etapa.'; if(trellis)out[0][1]='Sistema de soporte estable y crecimiento distribuido sobre el tutorado o conducción correspondiente.'; return out;}
 function parseRange(text){
  if(!text)return null;
  const s=String(text).replaceAll('.','').replaceAll(',','.');
@@ -373,20 +557,149 @@ function go(i){page=Math.max(0,Math.min(pages.length-1,i));render();window.scrol
 function next(){go(page+1)}function prev(){go(page-1)}
 function num(id){return parseFloat(document.getElementById(id)?.value)||0}
 function money(n){return new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0)}
-function calc(){let prod=num('plantas')*num('rendimiento');prodCalculada.value=prod?prod.toFixed(2):'';let pendiente=num('pendiente')*num('comercial')/100;bruto=pendiente*num('precio');let c=[...document.querySelectorAll('#costs .pend')].reduce((a,e)=>a+(parseFloat(e.value)||0),0);kprod.textContent=pendiente.toLocaleString('es-CO',{maximumFractionDigits:2})+' kg';kbruto.textContent=money(bruto);kcost.textContent=money(c);kneto.textContent=money(bruto-c)}
-function save(silent=false){localStorage.setItem('fichaAgricolaV6',JSON.stringify(collect()));localStorage.setItem('fichaAgricolaV5',JSON.stringify(collect()));status.textContent='Guardado localmente · '+new Date().toLocaleTimeString('es-CO');if(!silent)flash('Expediente guardado en este dispositivo.')}
-function collect(){let d={version:'6.0',saved:new Date().toISOString(),fields:{},samples:[],costs:[],infra:[],photos:photoData};document.querySelectorAll('input,select,textarea').forEach(e=>{if(e.id)d.fields[e.id]=e.type==='checkbox'?e.checked:e.value});d.samples=[...samples.querySelectorAll('tr')].map(r=>{let o={};r.querySelectorAll('[data-sample]').forEach(e=>o[e.dataset.sample]=e.value);o.gps=r.querySelector('[data-sample-gps]')?.textContent||'';return o});d.stageDistribution={};stageFields?.querySelectorAll('input')?.forEach(e=>d.stageDistribution[e.id]=e.value);d.costs=[...costs.querySelectorAll('tr')].map(r=>[...r.querySelectorAll('input')].map(e=>e.value));d.infra=[...infra.querySelectorAll('tr')].map(r=>[...r.querySelectorAll('input')].map(e=>e.value));return d}
+function calc(){
+  let prod=num('plantas')*num('rendimiento');
+  prodCalculada.value=prod?prod.toFixed(2):'';
+  let pendiente=num('pendiente')||0;
+  let bruto=pendiente*num('comercial')/100*num('precio');
+  let c=[...document.querySelectorAll('#costs .pend')].reduce((a,e)=>a+(parseFloat(e.value)||0),0);
+  kprod.textContent=(pendiente*num('comercial')/100).toLocaleString('es-CO',{maximumFractionDigits:2})+' kg';
+  kbruto.textContent=money(bruto);kcost.textContent=money(c);kneto.textContent=money(bruto-c);
+  calcPhysical();updateValuation();
+}
+function save(silent=false){localStorage.setItem('fichaAgricolaV9',JSON.stringify(collect()));localStorage.setItem('fichaAgricolaV8',JSON.stringify(collect()));status.textContent='Guardado localmente · '+new Date().toLocaleTimeString('es-CO');if(!silent)flash('Expediente guardado en este dispositivo.')}
+
+function sampleDerivedProduction(){
+  const k=especie?.value||'', rows=[...document.querySelectorAll('#samples tr')];
+  if(!rows.length) return null;
+  const n=(row,key)=>parseFloat(row.querySelector(`[data-sample="${key}"]`)?.value);
+  const stats=(arr)=>{if(!arr.length)return null;const m=arr.reduce((a,b)=>a+b,0)/arr.length;const sd=arr.length>1?Math.sqrt(arr.reduce((a,b)=>a+(b-m)**2,0)/(arr.length-1)):0;return {mean:m,cv:m?sd/m*100:0,min:Math.min(...arr),max:Math.max(...arr),n:arr.length};};
+  const perUnit={
+    papa:r=>{const a=n(r,'tuberculos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    maiz:r=>{const a=n(r,'mazorcas'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    tomate:r=>{const a=n(r,'racimos'),b=n(r,'frutos'),c=n(r,'peso');return a!=null&&b!=null&&c!=null?a*b*c/1000:null},
+    tomate_arbol:r=>{const a=n(r,'racimos'),b=n(r,'frutos'),c=n(r,'peso');return a!=null&&b!=null&&c!=null?a*b*c/1000:null},
+    frijol:r=>{const a=n(r,'vainas'),b=n(r,'granos'),c=n(r,'peso');return a!=null&&b!=null&&c!=null?a*b*c/100000:null},
+    cebolla_bulbo:r=>{const a=n(r,'bulbos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    arveja:r=>{const a=n(r,'vainas'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    cacao:r=>{const a=n(r,'mazorcas'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    zanahoria:r=>{const a=n(r,'raices'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    cebolla_junca:r=>{const a=n(r,'macollas'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    mora:r=>{const a=n(r,'tallos'),b=n(r,'racimos'),c=n(r,'frutos'),d=n(r,'peso');return a!=null&&b!=null&&c!=null&&d!=null?a*b*c*d/1000:null},
+    pera:r=>{const a=n(r,'frutos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    platano:r=>{const a=n(r,'racimo');return a!=null?a:null},
+    manzana:r=>{const a=n(r,'frutos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    durazno:r=>{const a=n(r,'frutos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    ciruela:r=>{const a=n(r,'frutos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    limon:r=>{const a=n(r,'frutos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    uchuva:r=>{const a=n(r,'frutos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    pitahaya:r=>{const a=n(r,'frutos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    fresa:r=>{const a=n(r,'plantas'),b=n(r,'frutos'),c=n(r,'peso');return a!=null&&b!=null&&c!=null?a*b*c/1000:null},
+    lulo:r=>{const a=n(r,'frutos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null},
+    ajo:r=>{const a=n(r,'bulbos'),b=n(r,'peso');return a!=null&&b!=null?a*b/1000:null}
+  };
+  const cerealPerHa=(r,ek,gk,pk)=>{const e=n(r,ek),g=n(r,gk),p=n(r,pk);return e!=null&&g!=null&&p!=null?e*g*p/100:null};
+  let derived=[];
+  if(['cebada','trigo'].includes(k)) derived=rows.map(r=>cerealPerHa(r,'espigas','granos',k==='cebada'?'pmg':'pmg')).filter(Number.isFinite).map(x=>({value:x,basis:'kg/ha'}));
+  else if(perUnit[k]) derived=rows.map(r=>perUnit[k](r)).filter(Number.isFinite).map(x=>({value:x,basis:(k==='pitahaya'?'kg/unidad productiva':k==='uchuva'?'kg/rama':k==='cebolla_bulbo'||k==='zanahoria'||k==='cebolla_junca'||k==='ajo'?'kg/unidad muestreada':k==='platano'||k==='papa'||k==='maiz'||k==='tomate'||k==='frijol'||k==='arveja'||k==='mora'||k==='fresa'||k==='lulo'?'kg/planta':k==='tomate_arbol'||k==='cacao'||k==='pera'||k==='manzana'||k==='durazno'||k==='ciruela'||k==='limon'?'kg/árbol':'kg/unidad')}));
+  if(!derived.length)return null;
+  const values=derived.map(x=>x.value), st=stats(values), basis=derived[0].basis;
+  return {kgPerUnit:st.mean,basis,cv:st.cv,n:st.n,min:st.min,max:st.max,isPerHa:basis==='kg/ha'};
+}
+function calcPhysical(){
+  if(!document.getElementById('areaEfectivaCalc')) return;
+  const area=Math.max(0,num('areaMedida')||num('areaCultivo'));
+  const totalUnits=Math.max(0,num('plantas')||0);
+  const live=Math.min(100,Math.max(0,num('vivasPct')||100)), productivePct=Math.min(100,Math.max(0,num('productivas')||100)), areaPct=Math.min(100,Math.max(0,num('areaProductivaPct')||100));
+  const effectiveArea=area*(areaPct/100);
+  const unitsProductive=totalUnits*(live/100)*(productivePct/100);
+  const reg=Math.max(0,num('pendiente'));
+  const d=sampleDerivedProduction();
+  areaEfectivaCalc.value=effectiveArea?effectiveArea.toFixed(4):'';
+  unidadesProductivasCalc.value=unitsProductive?unitsProductive.toFixed(1):'';
+  pendienteCalc.value=reg?reg.toFixed(2):'';
+  descarteCalc.value=document.getElementById('descarte')?.value||'';
+  if(d?.kgPerUnit!=null){
+    const p=document.getElementById('promedioMuestreo'); if(p)p.value=d.kgPerUnit.toLocaleString('es-CO',{maximumFractionDigits:4})+' '+d.basis;
+    const rh=document.getElementById('rendHaMuestreo'); if(rh){
+      let haVal='—';
+      if(d.isPerHa) haVal=d.kgPerUnit.toLocaleString('es-CO',{maximumFractionDigits:1})+' kg/ha';
+      else if(d.basis.includes('/m²')) haVal=(d.kgPerUnit*10000).toLocaleString('es-CO',{maximumFractionDigits:1})+' kg/ha';
+      else if(unitsProductive>0&&effectiveArea>0) haVal=(d.kgPerUnit*unitsProductive/effectiveArea).toLocaleString('es-CO',{maximumFractionDigits:1})+' kg/ha';
+      rh.value=haVal;
+    }
+    const cv=document.getElementById('cvMuestreo'); if(cv)cv.value=d.cv!=null?d.cv.toLocaleString('es-CO',{maximumFractionDigits:1})+' %':'—';
+    const comp=document.getElementById('completitudMuestreo'); if(comp)comp.value=`${d.n} puntos con variable base válida de ${document.querySelectorAll('#samples tr').length} registrados`;
+    const read=document.getElementById('lecturaMuestreo'); if(read){
+      const notes=[];
+      if(d.cv!=null) notes.push(d.cv<=15?'Variabilidad baja/moderada en la variable base.':d.cv<=30?'Variabilidad apreciable; conviene revisar heterogeneidad por zona.':'Variabilidad alta; revise estratos, puntos y posibles diferencias de manejo o estado productivo.');
+      notes.push(`La estimación corresponde a ${d.basis} y se extrapola únicamente cuando la unidad productiva del campo es compatible con esa base.`);
+      if(effectiveArea<=0||unitsProductive<=0) notes.push('Faltan área efectiva o unidades productivas para llevar el promedio del muestreo a producción total.');
+      read.value=notes.join(' ');
+    }
+    if(!num('muestreoCalc')) muestreoCalc.value=d.kgPerUnit.toFixed(4);
+  } else {
+    ['promedioMuestreo','rendHaMuestreo','cvMuestreo','completitudMuestreo','lecturaMuestreo'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  }
+  let mode=metodoCalculoFisico.value;
+  let base=0, equiv='—';
+  if(mode==='registro') base=reg;
+  if(mode==='unidad') base=unitsProductive*num('rendUnidadCalc');
+  if(mode==='hectarea') base=effectiveArea*num('rendHaCalc');
+  if(mode==='muestreo'){
+    if(d?.kgPerUnit!=null){
+      if(d.isPerHa) base=effectiveArea*d.kgPerUnit;
+      else if(d.basis.includes('/m²')) base=effectiveArea*d.kgPerUnit*10000;
+      else if(unitsProductive>0) base=unitsProductive*d.kgPerUnit;
+    } else base=num('muestreoCalc');
+  }
+  if(mode==='unidad'&&num('rendUnidadCalc')) equiv=num('rendUnidadCalc').toLocaleString('es-CO',{maximumFractionDigits:4})+' kg/unid';
+  if(mode==='hectarea'&&num('rendHaCalc')) equiv=num('rendHaCalc').toLocaleString('es-CO',{maximumFractionDigits:2})+' kg/ha';
+  if(mode==='muestreo'&&d?.kgPerUnit!=null) equiv=d.kgPerUnit.toLocaleString('es-CO',{maximumFractionDigits:3})+' '+d.basis;
+  kProdFisica.textContent=base.toLocaleString('es-CO',{maximumFractionDigits:2})+' kg';
+  const waste=Math.min(100,Math.max(0,num('descarteCalc')));
+  const commercial=Math.max(0,base*(1-waste/100));
+  kProdComercial.textContent=commercial.toLocaleString('es-CO',{maximumFractionDigits:2})+' kg';
+  kRendEquiv.textContent=equiv;kUnidadesProd.textContent=unitsProductive.toLocaleString('es-CO',{maximumFractionDigits:1});
+  if(document.getElementById('valKg')) document.getElementById('valKg').value=base?base.toFixed(2):'';
+  updateValuation();
+}
+function updateValuation(){
+  if(!document.getElementById('kValBruto')) return;
+  const mode=objetoValoracion.value;
+  document.querySelectorAll('.valuation-block').forEach(e=>e.classList.add('hidden'));
+  const block={pendiente:valuationPendiente,establecido:valuationEstablecido,afectacion:valuationAfectacion,renta:valuationRenta,mercado:valuationMercado}[mode]; if(block) block.classList.remove('hidden');
+  const base=parseFloat(kProdFisica?.textContent?.replace(/[^0-9,-]/g,'').replaceAll('.','').replace(',','.'))||0;
+  if(document.getElementById('valKg')) document.getElementById('valKg').value=base?base.toFixed(2):'';
+  let bruto=0,costos=0,res=0,ind='—';
+  if(mode==='pendiente'){
+    const kg=num('valKg'), pct=num('valComPct')||100, price=num('valPrecio'); bruto=kg*pct/100*price; costos=num('valCostPend')+num('valCostCom'); res=bruto-costos; ind=kg?((bruto/kg)||0).toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0})+'/kg bruto':'—';
+  } else if(mode==='establecido'){
+    const baseCost=num('valCostoBase'), adj=Math.max(0,num('valAjusteCosto')); bruto=baseCost; costos=baseCost*adj/100; res=bruto-costos; ind=baseCost?adj.toLocaleString('es-CO',{maximumFractionDigits:1})+' % ajuste':'—';
+  } else if(mode==='afectacion'){
+    const before=num('valAntes'), after=num('valDespues'); bruto=before; costos=num('valCostDanio'); res=Math.max(0,before-after)-costos; const pct=before?Math.max(0,(before-after)/before*100):0; valPerdidaPct.value=pct.toFixed(1); ind=pct.toLocaleString('es-CO',{maximumFractionDigits:1})+' % pérdida';
+  } else if(mode==='renta'){
+    const net=num('valIngresoNetoAnual'), rate=num('valTasaCap'); res=rate>0?net/(rate/100):0; bruto=net; ind=rate>0?money(res):'Ingrese tasa';
+  } else if(mode==='mercado'){
+    bruto=num('valUnidadMercado')*num('valCantMercado'); res=bruto; ind=num('valCantMercado')?money(num('valUnidadMercado'))+' / unidad':'—';
+  }
+  kValBruto.textContent=money(bruto);kValCostos.textContent=money(costos);kValResultado.textContent=money(res);kValIndicador.textContent=ind;
+  if(document.getElementById('valCostIncurridos')) valCostIncurridos.value=[...document.querySelectorAll('#costs tr')].reduce((a,r)=>a+(parseFloat(r.querySelectorAll('input')[1]?.value)||0),0).toFixed(0);
+  if(document.getElementById('valCostRegistradosPend')) valCostRegistradosPend.value=[...document.querySelectorAll('#costs .pend')].reduce((a,e)=>a+(parseFloat(e.value)||0),0).toFixed(0);
+}
+
+function collect(){let d={version:'9.0',saved:new Date().toISOString(),fields:{},samples:[],costs:[],infra:[],photos:photoData};document.querySelectorAll('input,select,textarea').forEach(e=>{if(e.id)d.fields[e.id]=e.type==='checkbox'?e.checked:e.value});d.samples=[...samples.querySelectorAll('tr')].map(r=>{let o={};r.querySelectorAll('[data-sample]').forEach(e=>o[e.dataset.sample]=e.value);o.gps=r.querySelector('[data-sample-gps]')?.textContent||'';return o});d.stageDistribution={};stageFields?.querySelectorAll('input')?.forEach(e=>d.stageDistribution[e.id]=e.value);d.costs=[...costs.querySelectorAll('tr')].map(r=>[...r.querySelectorAll('input')].map(e=>e.value));d.infra=[...infra.querySelectorAll('tr')].map(r=>[...r.querySelectorAll('input')].map(e=>e.value));return d}
 function migrateSampleRow(row){if(!Array.isArray(row))return row||{};return {units:row[0]||'',productive:row[1]||'',legacy:(row.slice(2).filter(Boolean).join(' · ')),state:row[4]||'Bueno',obs:row[5]||''}}
 function addCost(data=[]){let tr=document.createElement('tr');tr.innerHTML='<td><input placeholder="Ej. fertilización"></td><td><input type="number" value="0"></td><td><input class="pend" type="number" value="0"></td><td><input placeholder="Factura / productor / cotización"></td><td><button class="remove" onclick="this.closest(\'tr\').remove();calc();save(true)">×</button></td>';costs.appendChild(tr);[...tr.querySelectorAll('input')].forEach((e,i)=>{if(data[i]!=null)e.value=data[i]})}
 function addInfra(data=[]){let tr=document.createElement('tr');tr.innerHTML='<td><input placeholder="Ej. invernadero"></td><td><input type="number"></td><td><input></td><td><input></td><td><input placeholder="Bueno"></td><td><input></td><td><button class="remove" onclick="this.closest(\'tr\').remove();save(true)">×</button></td>';infra.appendChild(tr);[...tr.querySelectorAll('input')].forEach((e,i)=>{if(data[i]!=null)e.value=data[i]})}
 function getGPS(){if(!navigator.geolocation){gpsmsg.textContent='Este dispositivo no ofrece geolocalización.';return}gpsmsg.textContent='Obteniendo ubicación…';navigator.geolocation.getCurrentPosition(p=>{lat.value=p.coords.latitude.toFixed(7);lon.value=p.coords.longitude.toFixed(7);altitud.value=p.coords.altitude?Math.round(p.coords.altitude):'';fuenteCoord.value='GPS del teléfono';gpsmsg.textContent='Coordenadas capturadas. Precisión aproximada: '+Math.round(p.coords.accuracy)+' m.'},e=>gpsmsg.textContent='No fue posible obtener GPS: '+e.message,{enableHighAccuracy:true,timeout:15000,maximumAge:0})}
-function load(){let raw=localStorage.getItem('fichaAgricolaV6')||localStorage.getItem('fichaAgricolaV5')||localStorage.getItem('fichaAgricolaV3');if(!raw)return;try{let d=JSON.parse(raw);if(d.fields&&d.fields.especie){especie.value=d.fields.especie;profile()}Object.entries(d.fields||{}).forEach(([id,v])=>{let e=document.getElementById(id);if(e){if(e.type==='checkbox')e.checked=!!v;else e.value=v}});renderSampling();updateComparison();samples.innerHTML='';(d.samples||[]).forEach(row=>addSample(Array.isArray(row)?migrateSampleRow(row):row));costs.innerHTML='';(d.costs||[]).forEach(row=>addCost(row));infra.innerHTML='';(d.infra||[]).forEach(row=>addInfra(row));if(!samples.children.length)addFive();Object.entries(d.stageDistribution||{}).forEach(([id,v])=>{let e=document.getElementById(id);if(e)e.value=v});photoData=d.photos||[];renderPhotos();status.textContent='Expediente recuperado del dispositivo';updateComparison();updateSampleSummary()}catch(e){console.warn(e)}}
-function newCase(){if(!confirm('¿Crear un expediente nuevo? Se borrará el expediente local actual. Exporta primero si necesitas conservarlo.'))return;localStorage.removeItem('fichaAgricolaV6');localStorage.removeItem('fichaAgricolaV5');localStorage.removeItem('fichaAgricolaV3');location.reload()}
+function load(){let raw=localStorage.getItem('fichaAgricolaV9')||localStorage.getItem('fichaAgricolaV8')||localStorage.getItem('fichaAgricolaV7')||localStorage.getItem('fichaAgricolaV6')||localStorage.getItem('fichaAgricolaV5')||localStorage.getItem('fichaAgricolaV3');if(!raw)return;try{let d=JSON.parse(raw);if(d.fields&&d.fields.especie){especie.value=d.fields.especie}Object.entries(d.fields||{}).forEach(([id,v])=>{let e=document.getElementById(id);if(e){if(e.type==='checkbox')e.checked=!!v;else e.value=v}});profile();renderSampling();updateComparison();samples.innerHTML='';(d.samples||[]).forEach(row=>addSample(Array.isArray(row)?migrateSampleRow(row):row));costs.innerHTML='';(d.costs||[]).forEach(row=>addCost(row));infra.innerHTML='';(d.infra||[]).forEach(row=>addInfra(row));if(!samples.children.length)addFive();Object.entries(d.stageDistribution||{}).forEach(([id,v])=>{let e=document.getElementById(id);if(e)e.value=v});photoData=d.photos||[];renderPhotos();status.textContent='Expediente recuperado del dispositivo';updateComparison();updateSampleSummary()}catch(e){console.warn(e)}}
+function newCase(){if(!confirm('¿Crear un expediente nuevo? Se borrará el expediente local actual. Exporta primero si necesitas conservarlo.'))return;localStorage.removeItem('fichaAgricolaV9');localStorage.removeItem('fichaAgricolaV8');localStorage.removeItem('fichaAgricolaV7');localStorage.removeItem('fichaAgricolaV6');localStorage.removeItem('fichaAgricolaV5');localStorage.removeItem('fichaAgricolaV3');location.reload()}
 function flash(t){let x=document.createElement('div');x.textContent=t;x.style='position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#2c684d;color:#fff;padding:10px 14px;border-radius:10px;z-index:99';document.body.appendChild(x);setTimeout(()=>x.remove(),1800)}
-function exportJSON(){let b=new Blob([JSON.stringify(collect(),null,2)],{type:'application/json'});download(b,'expediente-valoracion-agricola-v6.json')}
-function exportCSV(){let d=collect(),csv='Campo,Valor\n'+Object.entries(d.fields).map(([k,v])=>`"${k}","${String(v??'').replaceAll('"','""')}"`).join('\n');download(new Blob([csv],{type:'text/csv;charset=utf-8'}),'expediente-valoracion-agricola-v6.csv')}
+function exportJSON(){let b=new Blob([JSON.stringify(collect(),null,2)],{type:'application/json'});download(b,'expediente-valoracion-agricola-v9.json')}
+function exportCSV(){let d=collect(),csv='Campo,Valor\n'+Object.entries(d.fields).map(([k,v])=>`"${k}","${String(v??'').replaceAll('"','""')}"`).join('\n');download(new Blob([csv],{type:'text/csv;charset=utf-8'}),'expediente-valoracion-agricola-v9.csv')}
 function download(b,n){let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 fotos.addEventListener('change',e=>{[...e.target.files].forEach(file=>{let r=new FileReader();r.onload=()=>{photoData.push({name:file.name,type:tipoFoto.value,description:descFoto.value,data:r.result});renderPhotos();save(true)};r.readAsDataURL(file)})});function renderPhotos(){photoGrid.innerHTML=photoData.map((p,i)=>`<div class="photo"><img src="${p.data}" alt=""><b>${p.type}</b><div class="source">${p.description||p.name}</div><button class="remove" onclick="photoData.splice(${i},1);renderPhotos();save(true)">Eliminar</button></div>`).join('')}
-initCatalog();especie.value='papa';fecha.value=new Date().toISOString().slice(0,10);hora.value=new Date().toTimeString().slice(0,5);profile();load();if(!samples.children.length)addFive();if(!costs.children.length){addCost();addCost();addCost();addCost()}if(!infra.children.length){addInfra();addInfra();addInfra()}render();document.addEventListener('input',()=>{calc();updateComparison();updateSampleSummary();});setInterval(()=>save(true),30000);
+initCatalog();especie.value='papa';fecha.value=new Date().toISOString().slice(0,10);hora.value=new Date().toTimeString().slice(0,5);fechaCorteCalculo.value=fecha.value;fechaValoracion.value=fecha.value;profile();load();if(!samples.children.length)addFive();if(!costs.children.length){addCost();addCost();addCost();addCost()}if(!infra.children.length){addInfra();addInfra();addInfra()}render();document.addEventListener('input',()=>{calc();updateComparison();updateSampleSummary();});setInterval(()=>save(true),30000);
 if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script></body></html>
