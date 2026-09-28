@@ -1,5 +1,5 @@
-const CACHE = 'ficha-agricola-v10-2026-09-28';
-const ASSETS = ['./','./index.html','./manifest.webmanifest','./?app=v10'];
+const CACHE = 'ficha-agricola-v11-2026-09-28';
+const ASSETS = ['./','./index.html','./manifest.webmanifest','./?app=v11'];
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE)

@@ -1,8 +1,8 @@
 {
-  "id": "./?app=v10",
+  "id": "./?app=v11",
   "name": "Ficha Agrícola de Valoración",
   "short_name": "Valoración agrícola",
-  "start_url": "./?app=v10",
+  "start_url": "./?app=v11",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f4f1eb",
