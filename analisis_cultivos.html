@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis · Cultivos (prototipo)</title>
+<style>
+/* Prototipo del módulo «Cultivos» de Análisis. Colores de la sección Análisis
+   (morado oscuro) en tema oscuro, que es el que se usa. Al portarlo a
+   analisis_ui.js se reemplazan por las variables de ui.html. */
+:root{--bg:#15121c;--card:#1f1a2a;--card2:#272033;--line:#3a3150;--text:#ece8f4;--muted:#a79fba;--acc:#9b6fe0;--acc2:#c9a2ff;--ok:#7fd49a;--warn:#f0c96a;--bad:#ff8f86;--sel:#5b2333;
+  --dg-ink:#ece8f4;--dg-muted:#a79fba;--dg-line:#3a3150;--dg-bg:#1a1622;--dg-soil:#8a6f4e;--dg-leaf:#6fa451;--dg-leaf2:#4c7a38;--dg-stem:#a57e55;--dg-accent2:#ff8a7a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 system-ui,Segoe UI,Roboto,Arial}
+header{display:flex;align-items:center;gap:12px;padding:10px 18px;background:#2a1d45;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+header h1{font-size:16px;margin:0}header .sp{flex:1}
+button,.btn{background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}
+button.pri{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+main{display:grid;grid-template-columns:260px 1fr;gap:14px;padding:14px 18px;max-width:1500px;margin:auto}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.lista button{display:block;width:100%;text-align:left;margin:0 0 6px;padding:9px 10px}
+.lista button.on{background:var(--sel);border-color:#a8455f}
+.lista small{display:block;color:var(--muted);font-size:11.5px}
+h2{font-size:15px;margin:0 0 8px}h3{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:16px 0 8px}
+.g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 12px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:1100px){.g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:3px}
+input,select,textarea{width:100%;background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:7px 8px;font:inherit}
+input.oblig{border-color:#d9822b}
+.k{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.k span{display:block;font-size:11px;color:var(--muted)}.k strong{font-size:16px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:5px 7px;border-bottom:1px solid var(--line);text-align:left}
+th{font-size:11px;color:var(--muted);text-transform:uppercase}td.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.tot td{font-weight:700;color:var(--acc2)}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin:6px 0 10px}.tabs button.on{background:var(--acc);border-color:var(--acc)}
+.alerta{padding:7px 10px;border-radius:7px;margin:5px 0;background:#33260f;color:var(--warn);border:1px solid #6b5518;font-size:12.5px}
+.alerta.bad{background:#3a1614;color:var(--bad);border-color:#6e2b27}
+.nota{font-size:12px;color:var(--muted)}
+.dg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.dg>div{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.vacio{padding:40px;text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><h1>📊 Análisis · Cultivos <span class="nota">prototipo v12 — se porta a la sección Análisis de Avaluapp</span></h1><div class="sp"></div>
+  <button onclick="document.getElementById('f').click()">📂 Abrir _Db.json de la visita</button>
+  <button class="pri" onclick="exportar()">⬇ Guardar análisis (JSON)</button>
+  <input type="file" id="f" accept=".json" multiple style="display:none"></header>
+<main>
+  <aside class="panel"><h2>Lotes de cultivo</h2><div class="lista" id="lista"><div class="nota">Abra uno o varios _Db.json rurales que traigan <code>lotes_cultivo</code>.</div></div></aside>
+  <section class="panel" id="det"><div class="vacio">Elija un lote.</div></section>
+</main>
+<script src="cultivos_catalogo.js"></script>
+<script src="cultivos_calculos.js"></script>
+<script src="cultivos_diagramas.js"></script>
+<script>
+/* El análisis de un lote vive en un objeto que tiene la MISMA forma que un
+   renglón de public.analisis (tipo = 'cultivo'):
+     { tipo, titulo, encargo_tipo, encargo_id, datos:{registro, lote (copia congelada),
+       fisico:{metodo,…}, valoracion:{modo, entradas}, adoptado}, resultados, valor_final }
+   Copia congelada del lote, como en Lotes: si se reimporta la visita, el
+   análisis guardado no cambia de cifras. */
+const K = CultivosCatalogo, C = CultivosCalc, D = CultivosDiagramas;
+const fmt = (n, d = 0) => (n === null || n === undefined || !Number.isFinite(+n)) ? '—' : (+n).toLocaleString('es-CO', { maximumFractionDigits: d });
+const $ = (id) => document.getElementById(id);
+let items = [], sel = -1;
+
+$('f').addEventListener('change', async (e) => {
+  for (const f of e.target.files) {
+    try {
+      const r = JSON.parse(await f.text());
+      (r.lotes_cultivo || []).forEach((l) => items.push({ registro: { id: r.id, nombre: r.nombre_base, municipio: r.municipio || '', fecha: r.fecha_visita_texto || '' },
+        lote: l, fisico: { metodo: 'muestreo', kg_unidad: null, kg_ha: null, kg_registro: null, descarte_pct: null },
+        valoracion: { modo: (l.objeto && l.objeto[0]) === 'establecido' ? 'establecido' : (l.objeto || []).includes('afectacion') ? 'afectacion' : 'pendiente', entradas: {} },
+        adoptado: null, notas: '' }));
+    } catch (err) { alert(f.name + ': ' + err.message); }
+  }
+  e.target.value = ''; lista(); if (sel < 0 && items.length) elegir(0);
+});
+function lista() {
+  $('lista').innerHTML = items.map((it, i) => { const c = K.get(it.lote.especie);
+    return `<button class="${i === sel ? 'on' : ''}" onclick="elegir(${i})">${c.nombre} · ${it.lote.nombre_lote || ''}<small>${it.registro.nombre || it.registro.id} ${it.registro.municipio}</small></button>`; }).join('')
+    || '<div class="nota">Sin lotes.</div>';
+}
+function elegir(i) { sel = i; lista(); pintar(); }
+
+function entrada(path, label, valor, extra = '') {
+  return `<div><label>${label}</label><input data-in="${path}" value="${valor ?? ''}" inputmode="decimal" ${extra}></div>`;
+}
+function pintar() {
+  const it = items[sel], l = it.lote, c = K.get(l.especie);
+  const f = it.fisico;
+  const pf = C.produccionFisica(l, c, f.metodo, f);
+  const geo = pf.geometria, m = pf.muestreo, rv = C.revisarLote(l, c);
+  const ef = C.edadFase(l, c, it.registro.fecha || new Date().toISOString().slice(0, 10));
+  const mi = l.mercado_informado || {}, cs = C.costos(l);
+  const precioKg = C.num(mi.precio) !== null && C.num(mi.kg_por_unidad) ? C.num(mi.precio) / C.num(mi.kg_por_unidad) : null;
+  const E = it.valoracion.entradas, modo = it.valoracion.modo;
+  // valores por defecto que vienen de campo (se pintan, pero él decide)
+  const def = {
+    pendiente: { kg_comercial: pf.kg_comercial !== null ? Math.round(pf.kg_comercial) : null, precio_kg: precioKg !== null ? Math.round(precioKg) : null, costos_pendientes: cs.pendiente || null },
+    establecido: { componentes: Object.entries(cs.por_etapa).filter(([k]) => k !== 'comercializacion').map(([k, v]) => ({ concepto: 'Incurrido · ' + k, valor: v.incurrido })),
+      vida_total_anios: c.vida_util_anios ? c.vida_util_anios[1] : null, edad_anios: ef.anios !== undefined && ef.anios !== null ? +ef.anios.toFixed(2) : null,
+      inicio_produccion_anios: c.inicio_prod_meses ? +(c.inicio_prod_meses[0] / 12).toFixed(2) : null },
+  };
+  const en = Object.assign({}, def[modo] || {}, E);
+  const res = C.valorar[modo](en);
+  it.resultados = { fisico: { kg_total: pf.kg_total, kg_comercial: pf.kg_comercial, t_ha: pf.t_ha, fuente: pf.fuente }, valor: res.valor, lineas: res.lineas };
+  const evaMed = c.eva_ref && c.eva_ref.boyaca ? c.eva_ref.boyaca.mediana * 1000 : null;
+
+  $('det').innerHTML = `
+    <h2>${c.nombre} · ${l.nombre_lote || ''} <span class="nota">· ${it.registro.nombre || ''} · objeto: ${(l.objeto || []).join(', ') || 'sin definir'}</span></h2>
+    ${rv.faltan.map((x) => `<div class="alerta bad">Falta de campo: ${x}</div>`).join('')}${rv.avisos.map((x) => `<div class="alerta">${x}</div>`).join('')}
+    <h3>1 · Base física</h3>
+    <div class="kpis">
+      <div class="k"><span>Área efectiva</span><strong>${fmt(geo.area_efectiva_ha, 4)} ha</strong><span>${geo.fuente_area || 'sin fuente'} · ${fmt(geo.area_productiva_pct)} % productiva</span></div>
+      <div class="k"><span>Unidades productivas</span><strong>${fmt(geo.unidades_productivas)}</strong><span>${geo.fuente_unidades || '—'} · ${geo.fuente_fraccion}</span></div>
+      <div class="k"><span>Edad</span><strong>${ef.meses !== null ? fmt(ef.meses, 1) + ' meses' : '—'}</strong><span>${ef.fase || ''} ${ef.fuente ? '· ' + ef.fuente : ''}</span></div>
+      <div class="k"><span>Muestreo</span><strong>${m.kg_base ? fmt(m.kg_base.media, 3) + ' ' + m.base_label : '—'}</strong><span>n=${m.puntos_validos} · CV ${m.kg_base && m.kg_base.cv !== null ? fmt(m.kg_base.cv, 1) + ' %' : '—'} · IC95 ±${m.kg_base && m.kg_base.error_rel_pct !== null ? fmt(m.kg_base.error_rel_pct) + ' %' : '—'}</span></div>
+    </div>
+    <h3>2 · Producción física</h3>
+    <div class="g">
+      <div><label>Método</label><select data-in="fisico.metodo">${[['muestreo', 'Derivada del muestreo'], ['unidad', 'Unidades × kg por unidad'], ['hectarea', 'Área × kg/ha'], ['registro', 'Registrada / informada']]
+        .map(([v, t]) => `<option value="${v}"${f.metodo === v ? ' selected' : ''}>${t}</option>`).join('')}</select></div>
+      ${f.metodo === 'unidad' ? entrada('fisico.kg_unidad', 'kg por unidad', f.kg_unidad, 'class="oblig"') : ''}
+      ${f.metodo === 'hectarea' ? entrada('fisico.kg_ha', `kg/ha (EVA Boyacá mediana: ${fmt(evaMed)})`, f.kg_ha, 'class="oblig"') : ''}
+      ${f.metodo === 'registro' ? entrada('fisico.kg_registro', 'kg pendientes registrados', f.kg_registro ?? (l.produccion_informada || {}).produccion_anual_kg, 'class="oblig"') : ''}
+      ${entrada('fisico.descarte_pct', 'Descarte (%) si no sale del muestreo', f.descarte_pct)}
+    </div>
+    <div class="kpis" style="margin-top:8px">
+      <div class="k"><span>Producción física</span><strong>${fmt(pf.kg_total)} kg</strong></div>
+      <div class="k"><span>Comercial (${fmt(pf.comercial_pct)} %)</span><strong>${fmt(pf.kg_comercial)} kg</strong><span>${pf.fuente_comercial}</span></div>
+      <div class="k"><span>Rendimiento equivalente</span><strong>${fmt(pf.t_ha, 2)} t/ha</strong><span>${pf.eva ? pf.eva.posicion : ''}</span></div>
+      <div class="k"><span>Traza</span><span style="color:var(--text)">${pf.fuente || '—'}</span></div>
+    </div>
+    <div class="dg" style="margin-top:10px"><div>${D.rendimiento(c, pf.t_ha)}</div><div>${D.ciclo(c, ef.meses)}</div></div>
+    <h3>3 · Valoración <span class="nota">— la calculadora hace la cuenta; el método y su sustento son del avaluador</span></h3>
+    <div class="tabs">${[['pendiente', 'Producción pendiente'], ['establecido', 'Cultivo establecido (costo)'], ['afectacion', 'Afectación'], ['renta', 'Renta'], ['mercado', 'Mercado']]
+      .map(([v, t]) => `<button data-modo="${v}" class="${modo === v ? 'on' : ''}">${t}</button>`).join('')}</div>
+    <div class="g">${camposModo(modo, en)}</div>
+    <table style="margin-top:10px"><tbody>${res.lineas.map(([t, v], i) => `<tr class="${i === res.lineas.length - 1 ? 'tot' : ''}"><td>${t}</td><td class="n">${celda(t, v)}</td></tr>`).join('')}</tbody></table>
+    <h3>4 · Conclusión</h3>
+    <div class="g g2">${entrada('adoptado', 'Valor adoptado para el informe ($)', it.adoptado ?? (res.valor !== null ? Math.round(res.valor) : ''), 'class="oblig"')}
+      <div><label>Justificación</label><textarea data-in="notas" rows="3">${it.notas || ''}</textarea></div></div>
+    <p class="nota">Informado en campo: precio ${mi.precio ? '$' + fmt(C.num(mi.precio)) + ' por ' + (mi.unidad_venta || '') : '—'} · costos incurridos $${fmt(cs.incurrido)} · pendientes $${fmt(cs.pendiente)} · producción anual dicha ${fmt(C.num((l.produccion_informada || {}).produccion_anual_kg))} kg.</p>`;
+}
+function celda(t, v) {   // los renglones sin pesos (kg, cantidades, factores, años) no llevan $
+  if (typeof v !== 'number') return v ?? '—';
+  if (Object.is(v, -0)) v = 0;
+  if (/\(kg\)|Cantidad|Años|Factor|×|Tasa/i.test(t)) return fmt(v, Math.abs(v) < 10 ? 4 : 0);
+  return '$ ' + fmt(v);
+}
+function camposModo(modo, e) {
+  const E = (k, t, x = '') => entrada('val.' + k, t, e[k], x);
+  if (modo === 'pendiente') return E('kg_comercial', 'kg comerciales', 'class="oblig"') + E('precio_kg', 'Precio en finca $/kg', 'class="oblig"') + E('costos_pendientes', 'Costos pendientes $') +
+    E('costos_comercializacion', 'Cosecha y comercialización $') + E('tasa_mensual_pct', 'Tasa de descuento mensual %') + E('meses_a_cosecha', 'Meses a la cosecha');
+  if (modo === 'establecido') {
+    const comp = e.componentes || [];
+    return comp.map((x, i) => `<div><label>Componente</label><input data-in="comp.${i}.concepto" value="${x.concepto || ''}"></div><div><label>Valor $</label><input data-in="comp.${i}.valor" value="${x.valor ?? ''}"></div>`).join('') +
+      `<div><label>&nbsp;</label><button onclick="addComp()">＋ Componente</button></div><div></div>` + E('castigo_estado_pct', 'Castigo por estado %') +
+      `<div><label>Ajuste por vida remanente</label><select data-in="val.vida_remanente"><option value="">No</option><option value="1"${e.vida_remanente ? ' selected' : ''}>Sí (lineal)</option></select></div>` +
+      E('vida_total_anios', 'Vida útil total (años)') + E('edad_anios', 'Edad (años)') + E('inicio_produccion_anios', 'Inicio de producción (años)');
+  }
+  if (modo === 'afectacion') return E('valor_sin', 'Valor sin afectación $', 'class="oblig"') + E('valor_con', 'Valor con afectación $', 'class="oblig"') + E('costos_adicionales', 'Costos adicionales causados $');
+  if (modo === 'renta') return E('renta_neta_anual', 'Renta neta anual $', 'class="oblig"') + E('tasa_pct', 'Tasa %', 'class="oblig"') + E('anios_remanentes', 'Años de vida remanente (vacío = perpetua)');
+  return E('valor_unitario', 'Valor unitario $', 'class="oblig"') + E('cantidad', 'Cantidad', 'class="oblig"') + `<div><label>Unidad</label><input data-in="val.unidad" value="${e.unidad || ''}" placeholder="ha, árbol, planta"></div>`;
+}
+function compsIniciales(it) {   // la primera vez se congela lo propuesto desde campo
+  const cs = C.costos(it.lote);
+  return Object.entries(cs.por_etapa).filter(([x]) => x !== 'comercializacion').map(([x, y]) => ({ concepto: 'Incurrido · ' + x, valor: y.incurrido }));
+}
+function addComp() { const E = items[sel].valoracion.entradas; if (!E.componentes) E.componentes = compsIniciales(items[sel]); E.componentes.push({ concepto: '', valor: null }); pintar(); }
+document.addEventListener('click', (e) => { const b = e.target.closest('[data-modo]'); if (b) { items[sel].valoracion.modo = b.dataset.modo; pintar(); } });
+document.addEventListener('change', (e) => {
+  const el = e.target, p = el.dataset.in; if (!p || sel < 0) return;
+  const it = items[sel], v = el.tagName === 'SELECT' || p === 'notas' || /concepto|unidad/.test(p) ? el.value : C.num(el.value);
+  if (p.startsWith('fisico.')) it.fisico[p.slice(7)] = v;
+  else if (p.startsWith('val.')) it.valoracion.entradas[p.slice(4)] = v === '' ? null : v;
+  else if (p.startsWith('comp.')) {
+    const [, i, k] = p.split('.'); const E = it.valoracion.entradas;
+    if (!E.componentes) E.componentes = compsIniciales(it);
+    E.componentes[+i][k] = k === 'valor' ? C.num(el.value) : el.value;
+  } else if (p === 'adoptado') it.adoptado = v; else if (p === 'notas') it.notas = v;
+  pintar();
+});
+function exportar() {
+  const filas = items.map((it) => ({ tipo: 'cultivo', titulo: `LFV ${K.get(it.lote.especie).nombre} ${it.lote.nombre_lote || ''}`.trim(),
+    encargo_tipo: 'contrato', encargo_id: null,
+    datos: { registro: { tipo: 'rural', ...it.registro }, lote: it.lote, fisico: it.fisico, valoracion: it.valoracion, notas: it.notas, catalogo_version: K.META.version },
+    resultados: it.resultados || null, valor_final: it.adoptado ?? (it.resultados ? it.resultados.valor : null) }));
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(filas, null, 2)], { type: 'application/json' }));
+  a.download = 'analisis_cultivos.json'; a.click();
+}
+</script>
+</body>
+</html>

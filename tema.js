@@ -1,0 +1,154 @@
+// Modo oscuro de la app. Guarda la preferencia y redefine las variables CSS.
+(function(){
+  const KEY='temaApp';
+
+  const css = `
+  html.oscuro{
+    --white:#1E2226; --text:#E8EAED; --gray:#9AA0A6;
+    --gray-light:#2A2E33; --gray-border:#3C4043;
+    --blue-light:#1B2A44; --green-light:#14291B;
+    --amber-light:#33260F; --red-light:#3A1614; --purple-light:#261A3B;
+  }
+  html.oscuro body{background:#121417 !important;color:var(--text);}
+  html.oscuro .export-area{background:#181B1F !important;}
+  /* Tarjetas del menú con tinte propio por sección */
+  html.oscuro .card-btn{background:#1E2226 !important;border-color:#3C4043 !important;box-shadow:none !important;}
+  html.oscuro a.card-btn[href="urbano.html"]{background:#17233A !important;border-color:#2A4A7F !important;}
+  html.oscuro a.card-btn[href="rural.html"]{background:#14291B !important;border-color:#2A5537 !important;}
+  html.oscuro a.card-btn[href="registros.html"]{background:#231A38 !important;border-color:#4A3576 !important;}
+  html.oscuro .folder-card{background:#2A2410 !important;border-color:#5A4B1E !important;}
+  /* Aviso de borrador recuperable */
+  html.oscuro .brr-aviso{background:#33260F !important;border-color:#6B5518 !important;border-left-color:#C68A2E !important;}
+  html.oscuro .brr-txt b{color:#FBD38D !important;}
+  html.oscuro .brr-txt span{color:#E0C486 !important;}
+  html.oscuro .brr-txt small{color:#C1A46B !important;}
+  html.oscuro .brr-no{color:#E0C486 !important;border-color:#6B5518 !important;}
+  /* Municipio: campo único con panel desplegable */
+  html.oscuro .mb-panel{background:#22262B !important;border-color:#3C4043 !important;box-shadow:0 6px 20px rgba(0,0,0,0.5) !important;}
+  html.oscuro .mb-op{color:#E8EAED !important;border-color:#3C4043 !important;}
+  html.oscuro .mb-op.marcado{background:#33383E !important;}
+  html.oscuro .mb-vacio{color:#9AA0A6 !important;}
+  html.oscuro .mun-box > button{color:#B8BCC2 !important;}
+  /* Vínculo de encargo */
+  html.oscuro .enc-vinculo{background:#22262B !important;border-color:#3C4043 !important;}
+  html.oscuro .enc-modo label{color:#E8EAED !important;}
+  html.oscuro .enc-info, html.oscuro .enc-pie{color:#9AA0A6 !important;}
+  html.oscuro [data-encargo].enc-heredado{background:#1B2A44 !important;}
+  html.oscuro .chip-group.enc-heredado{background:#1B2A44 !important;border-radius:8px;padding:4px;}
+  html.oscuro .badge-enc{background:#2E1F4A !important;color:#C9B6F5 !important;}
+  /* Lista de carpetas de destino */
+  html.oscuro .fitem{background:#22262B !important;border-color:#3C4043 !important;}
+  html.oscuro .fitem.activa{background:#14291B !important;border-color:#81C995 !important;}
+  html.oscuro .fitem .fradio{border-color:#5F6368 !important;}
+  html.oscuro .fitem.activa .fradio{border-color:#81C995 !important;}
+  html.oscuro .fitem.activa .fradio::after{background:#81C995 !important;}
+  html.oscuro .fitem .fnom b{color:#E8EAED !important;}
+  html.oscuro .fitem .fnom span{color:#9AA0A6 !important;}
+  html.oscuro .card-text span{color:#B8BCC2 !important;}
+  html.oscuro .divider{background:#3C4043 !important;}
+  /* Tarjetas de registro (Mis registros) */
+  html.oscuro .reg{background:#1E2226 !important;border-color:#3C4043 !important;}
+  html.oscuro .reg-actions button{background:#2A2E33 !important;border-color:#3C4043 !important;color:#E8EAED !important;}
+  html.oscuro .filtro{background:#2A2E33 !important;color:#B8BCC2 !important;border-color:#3C4043 !important;}
+  html.oscuro .btn-import{background:#14291B !important;color:#8FD19E !important;}
+  /* Elementos de los formularios en modo oscuro */
+  html.oscuro .card{background:#181B1F !important;border-color:#3C4043 !important;}
+  html.oscuro .card-header{background:#22262B !important;border-color:#3C4043 !important;}
+  html.oscuro .chip{background:#2A2E33 !important;color:#B8BCC2 !important;border-color:#3C4043 !important;}
+  /* --- ESTADO SELECCIONADO de los chips en modo oscuro ---
+     Las reglas .chip.active de urbano/rural NO llevan !important, así que la
+     regla html.oscuro .chip de arriba las pisaba y el chip seleccionado se veía
+     igual que uno sin seleccionar. Aquí se restituye el estado con !important. */
+  html.oscuro .chip.active{
+    background:#1B3A5C !important; border-color:#8AB4F8 !important;
+    color:#D2E3FC !important; font-weight:600 !important;
+    box-shadow:inset 0 0 0 1px #8AB4F8 !important;
+  }
+  html.oscuro .chip.active-blue{
+    background:#1B3A5C !important; border-color:#8AB4F8 !important;
+    color:#D2E3FC !important; font-weight:600 !important;
+    box-shadow:inset 0 0 0 1px #8AB4F8 !important;
+  }
+  /* rural usa verde para .chip.active: se distingue con tono verde claro */
+  html.oscuro .rural-page .chip.active{
+    background:#1B402A !important; border-color:#81C995 !important;
+    color:#CEEAD6 !important; box-shadow:inset 0 0 0 1px #81C995 !important;
+  }
+  /* Filtros de "Mis registros" */
+  html.oscuro .filtro.active{
+    background:#3A2A5C !important; border-color:#C58AF9 !important;
+    color:#EADDFF !important; font-weight:600 !important;
+  }
+  /* Pestañas de plantas (planos.js) */
+  html.oscuro .pl-tab{background:#2A2E33 !important;border-color:#3C4043 !important;color:#B8BCC2 !important;}
+  html.oscuro .pl-tab.active{background:#4A2E10 !important;border-color:#FF8F3C !important;color:#FFD2AC !important;}
+  html.oscuro .pl-tab-add{color:#B8BCC2 !important;border-color:#3C4043 !important;}
+  html.oscuro .pl-btn{background:#2A2E33 !important;border-color:#3C4043 !important;color:#E8EAED !important;}
+  html.oscuro .pl-btn-del{color:#F28B82 !important;border-color:#5C2B27 !important;}
+  html.oscuro .pl-btn-rot{color:#81C995 !important;border-color:#25482F !important;}
+  html.oscuro .pl-btn-merge{color:#C58AF9 !important;border-color:#3E2A5C !important;}
+  html.oscuro .pl-btn.on{background:#4A2E10 !important;border-color:#FF8F3C !important;color:#FFD2AC !important;}
+  html.oscuro .pl-hint, html.oscuro .pl-calco{color:#9AA0A6 !important;}
+  /* Catálogo de elementos del editor de plantas */
+  html.oscuro .pl-cat{background:#2A2E33 !important;border-color:#3C4043 !important;color:#B8BCC2 !important;}
+  html.oscuro .pl-cat.on{background:#4A2E10 !important;border-color:#FF8F3C !important;color:#FFD2AC !important;}
+  html.oscuro .pl-items{background:#22262B !important;border-color:#3C4043 !important;}
+  html.oscuro .pl-item{background:#2A2E33 !important;border-color:#3C4043 !important;color:#E8EAED !important;}
+  html.oscuro .pl-size{background:#22262B !important;border-color:#3C4043 !important;color:#B8BCC2 !important;}
+  /* El lienzo de plantas se deja BLANCO a propósito: el dibujo es a trazo negro
+     y el borrador de área es blanco opaco. Invertirlo rompería el borrador. */
+  /* Segmentos del mapa de campo */
+  html.oscuro .mc-seg button{background:#2A2E33 !important;color:#B8BCC2 !important;border-color:#3C4043 !important;}
+  html.oscuro .mc-seg button.on{background:#1B402A !important;color:#CEEAD6 !important;border-color:#81C995 !important;}
+  html.oscuro .section-table input, html.oscuro .dep-table input{background:#2A2E33 !important;color:#E8EAED !important;}
+  /* Tablas de entorno y secciones rurales */
+  html.oscuro .env-table input, html.oscuro .env-table select, html.oscuro .env-table textarea{background:#2A2E33 !important;color:#E8EAED !important;}
+  html.oscuro .env-table tr:nth-child(even) td{background:#202429 !important;}
+  html.oscuro .env-table td, html.oscuro .env-table th{border-color:#3C4043 !important;}
+  html.oscuro .sec-table input{background:#2A2E33 !important;color:#E8EAED !important;}
+  html.oscuro .sec-table td, html.oscuro .sec-table th{border-color:#3C4043 !important;}
+  /* Anotaciones */
+  html.oscuro .anot{background:#22262B !important;border-color:#3C4043 !important;}
+  html.oscuro .anot input, html.oscuro .anot textarea{background:#2A2E33 !important;color:#E8EAED !important;}
+  /* Campos readonly con fondo fijo */
+  html.oscuro input[readonly]{background:#202429 !important;}
+  html.oscuro .btn-new{background:#2A2E33 !important;color:#B8BCC2 !important;border-color:#3C4043 !important;}
+  html.oscuro .progress-fill{background:#8AB4F8 !important;}
+  html.oscuro input, html.oscuro select, html.oscuro textarea{
+    background:#2A2E33 !important; color:#E8EAED !important; border-color:#3C4043 !important;
+  }
+  html.oscuro input::placeholder, html.oscuro textarea::placeholder{color:#7d8388;}
+  html.oscuro .btn-folder-rd{background:transparent !important;}
+  html.oscuro table, html.oscuro td, html.oscuro th{border-color:#3C4043 !important;}
+  html.oscuro .aviso-carpeta{background:#181B1F !important;color:#9AA0A6 !important;}
+  html.oscuro ::-webkit-scrollbar{width:10px;background:#181B1F;}
+  html.oscuro ::-webkit-scrollbar-thumb{background:#3C4043;border-radius:6px;}
+  `;
+
+  function aplicar(t){
+    document.documentElement.classList.toggle('oscuro', t==='oscuro');
+    const b=document.getElementById('btnTema');
+    if(b) b.textContent = (t==='oscuro') ? '☀️' : '🌙';
+  }
+  function actual(){ return localStorage.getItem(KEY) || 'claro'; }
+
+  // inyectar estilos de inmediato (evita parpadeo)
+  const st=document.createElement('style');
+  st.textContent=css;
+  document.head.appendChild(st);
+  aplicar(actual());
+
+  // botón flotante para cambiar de tema
+  window.addEventListener('DOMContentLoaded', function(){
+    const b=document.createElement('button');
+    b.id='btnTema'; b.type='button'; b.title='Modo claro / oscuro';
+    b.style.cssText='position:fixed;top:10px;right:10px;z-index:5000;width:40px;height:40px;border-radius:50%;border:none;background:rgba(0,0,0,0.35);color:#fff;font-size:17px;cursor:pointer;';
+    b.textContent = (actual()==='oscuro') ? '☀️' : '🌙';
+    b.addEventListener('click', function(){
+      const t = (actual()==='oscuro') ? 'claro' : 'oscuro';
+      localStorage.setItem(KEY, t);
+      aplicar(t);
+    });
+    document.body.appendChild(b);
+  });
+})();
