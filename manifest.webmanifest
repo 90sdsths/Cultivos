@@ -1,0 +1,12 @@
+{
+  "id": "./?app=v11",
+  "name": "Cultivos · valoración agrícola",
+  "short_name": "Cultivos",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#121417",
+  "theme_color": "#188038",
+  "lang": "es-CO",
+  "description": "Fichas, captura y muestreo de cultivos para avalúos (v12)."
+}
